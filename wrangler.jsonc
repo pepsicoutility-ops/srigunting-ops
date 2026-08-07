@@ -3,9 +3,11 @@
   // from auto-detecting the framework and demanding the Cloudflare Vite
   // plugin (which needs Vite >= 6) — this site is a plain static build.
   //
-  // If the Cloudflare project you keep is named "srigunting-company",
-  // change `name` below to match it.
-  "name": "srigunting",
+  // `name` MUST match the Worker that owns srigunting.id, which is
+  // "srigunting-ops". Wrangler deploys to whatever name is written here, so
+  // a mismatch silently creates a second Worker and leaves the live domain
+  // serving the old build.
+  "name": "srigunting-ops",
   "compatibility_date": "2025-11-01",
   "assets": {
     "directory": "./dist"
