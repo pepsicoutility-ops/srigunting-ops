@@ -1,30 +1,81 @@
-/** Single source of truth for company facts used across sections. */
+/**
+ * Single source of truth for company facts.
+ *
+ * Every value here is taken verbatim from the company's own material:
+ * the live site sriguntingpratama.com, its product detail pages, and the
+ * Export Technical Company Profile / QC Datasheet PDFs. Nothing is invented.
+ */
 export const COMPANY = {
-  legalName: 'PT Sri Gunting Pratama',
+  legalName: 'PT. Sri Gunting Pratama',
   shortName: 'Sri Gunting Pratama',
-  address: 'Jl. Industri No. 1, Randuagung — Singosari, Malang, East Java, Indonesia',
-  phone: '+62 811-3600-10',
+  address:
+    'Jl. Perusahaan gang Industri No.1, Randu Agung, Singosari, Malang 65153, Jawa Timur, Indonesia',
+  addressShort: 'Randu Agung, Singosari — Malang 65153, Jawa Timur',
+  phone: '+62 811 360 010',
   phoneRaw: '+62811360010',
-  website: 'www.sriguntingpratama.com',
-  founded: null,
-  brands: ['Sri Gunting Ekonomis', 'Wise Spoon', 'Sri Gunting Pratama'],
+  email: 'info@sriguntingpratama.com',
+  website: 'sriguntingpratama.com',
+  whatsapp:
+    "https://api.whatsapp.com/send?phone=62811360010&text=I'm%20interested%20in%20your%20provided%20service",
 }
 
-export const FOOTER_NAV = [
-  { id: 'about', key: 'nav.about' },
-  { id: 'products', key: 'nav.products' },
-  { id: 'specifications', key: 'nav.specs' },
-  { id: 'process', key: 'nav.process' },
-  { id: 'quality', key: 'nav.quality' },
-  { id: 'facility', key: 'nav.facility' },
-  { id: 'contact', key: 'nav.contact' },
+export const SOCIALS = [
+  { label: 'WhatsApp', href: COMPANY.whatsapp, icon: 'whatsapp' },
+  { label: 'Instagram', href: 'https://instagram.com/ontheseaweed', icon: 'instagram' },
+  { label: 'Facebook', href: 'https://www.facebook.com/sri-gunting-pratama/', icon: 'facebook' },
+  { label: 'X / Twitter', href: 'https://www.twitter.com/sri-gunting-pratama/', icon: 'twitter' },
 ]
 
-export const FOOTER_PRODUCTS = [
-  'Agar-Agar Powder GS 700',
-  'Agar-Agar Powder GS 800',
-  'Agar-Agar Powder GS 900',
-  'Bulk 25 kg Industrial Sack',
-  'Wise Spoon Retail Pouch',
-  'Sri Gunting Ekonomis Sachet',
+/** Downloadable documents, mirroring the old site's Downloads section. */
+export const DOWNLOADS = [
+  { key: 'profile', file: '/docs/company-profile.pdf' },
+  { key: 'capacity', file: '/docs/qc-datasheet-checklist.pdf' },
+  { key: 'catalog', file: '/docs/product-catalog.pdf' },
+]
+
+/**
+ * Products exactly as listed on sriguntingpratama.com, including the
+ * category used by its Agar-agar powder / Jelly Powder filter.
+ */
+export const PRODUCTS = [
+  {
+    id: 'bulk',
+    category: 'agar',
+    image: '/assets/products/bulk-25kg.png',
+    tint: 'from-[#EFE7DA] to-[#DFD2BC]',
+    featured: true,
+  },
+  {
+    id: 'pouch-agar',
+    category: 'agar',
+    image: '/assets/products/wisespoon-agar-pouch.png',
+    tint: 'from-[#E8F2EA] to-[#CFE3D5]',
+  },
+  {
+    id: 'pouch-jelly',
+    category: 'jelly',
+    image: '/assets/products/wisespoon-vitjell.png',
+    tint: 'from-[#F3E9F6] to-[#E2D3EC]',
+  },
+  {
+    id: 'sachet-8g',
+    category: 'agar',
+    image: '/assets/products/ekonomis-8g.png',
+    tint: 'from-[#FBF3D9] to-[#F3E3B4]',
+  },
+  {
+    id: 'sachet-ekonomis',
+    category: 'agar',
+    image: '/assets/products/ekonomis-6g.png',
+    tint: 'from-[#FCEFE0] to-[#F5DFC4]',
+  },
+]
+
+export const NAV_LINKS = [
+  { id: 'about', key: 'nav.about' },
+  { id: 'products', key: 'nav.products' },
+  { id: 'quality', key: 'nav.quality' },
+  { id: 'facility', key: 'nav.facility' },
+  { id: 'faq', key: 'nav.faq' },
+  { id: 'downloads', key: 'nav.downloads' },
 ]

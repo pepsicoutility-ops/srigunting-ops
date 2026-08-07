@@ -2,15 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 import LanguageToggle from '../components/LanguageToggle.jsx'
-
-const LINKS = [
-  { id: 'about', key: 'nav.about' },
-  { id: 'products', key: 'nav.products' },
-  { id: 'specifications', key: 'nav.specs' },
-  { id: 'process', key: 'nav.process' },
-  { id: 'quality', key: 'nav.quality' },
-  { id: 'facility', key: 'nav.facility' },
-]
+import { NAV_LINKS as LINKS, COMPANY } from '../data/company.js'
 
 export default function Navbar() {
   const { t } = useI18n()
@@ -113,6 +105,13 @@ export default function Navbar() {
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <LanguageToggle tone="light" />
             <a
+              href={`tel:${COMPANY.phoneRaw}`}
+              className="hidden items-center gap-2 text-[13px] font-semibold text-white/70 transition-colors hover:text-emerald-400 xl:inline-flex"
+            >
+              {COMPANY.phone}
+            </a>
+
+            <a
               href="#contact"
               className="hidden rounded-full bg-emerald-500 px-5 py-2.5 text-[13px] font-semibold text-white transition-all duration-300 hover:bg-emerald-600 hover:shadow-[0_8px_24px_-8px_rgba(15,169,88,0.8)] lg:inline-flex"
             >
@@ -195,6 +194,16 @@ export default function Navbar() {
                 className="btn-primary mt-10 w-full py-4 text-base"
               >
                 {t('nav.cta')}
+              </motion.a>
+
+              <motion.a
+                href={`tel:${COMPANY.phoneRaw}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.58, duration: 0.5 }}
+                className="mt-5 block text-center font-display text-lg text-white/70 transition-colors hover:text-emerald-400"
+              >
+                {COMPANY.phone}
               </motion.a>
             </div>
           </motion.div>

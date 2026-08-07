@@ -64,27 +64,22 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.06] py-1.5 pl-1.5 pr-4 backdrop-blur-sm"
           >
-            <span className="rounded-full bg-emerald-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
-              PT
-            </span>
+            <img
+              src="/assets/brand/logo.png"
+              alt=""
+              className="h-7 w-7 rounded-full bg-white object-contain p-0.5"
+            />
             <span className="text-[11px] font-medium tracking-wide text-white/75 sm:text-xs">
               {t('hero.eyebrow')}
             </span>
           </motion.div>
 
-          <h1 className="mt-7 font-display text-[clamp(2.7rem,5.6vw,7rem)] font-light leading-[0.98] tracking-[-0.032em] text-white">
+          <h1 className="mt-7 font-display text-[clamp(2.3rem,4.4vw,5.5rem)] font-light leading-[1.03] tracking-[-0.03em] text-white">
             {/* Re-keyed on `lang` so the stagger replays when the language changes */}
             <motion.span key={`${lang}-a`} custom={0} variants={line} initial="hidden" animate="show" className="block">
               {t('hero.titleA')}
             </motion.span>
-            <motion.span
-              key={`${lang}-b`}
-              custom={1}
-              variants={line}
-              initial="hidden"
-              animate="show"
-              className="block text-white/45"
-            >
+            <motion.span key={`${lang}-b`} custom={1} variants={line} initial="hidden" animate="show" className="block">
               {t('hero.titleB')}
             </motion.span>
             <motion.span key={`${lang}-c`} custom={2} variants={line} initial="hidden" animate="show" className="block">
@@ -92,8 +87,6 @@ export default function Hero() {
               <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-gold-light bg-clip-text pr-[0.12em] italic text-transparent">
                 {t('hero.titleC')}
               </span>
-              {/* negative margin cancels the clip-guard padding above */}
-              <span className="-ml-[0.12em] text-emerald-400">.</span>
             </motion.span>
           </h1>
 
@@ -123,7 +116,7 @@ export default function Hero() {
                 <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-            <a href="/docs/company-profile.pdf" target="_blank" rel="noreferrer" className="btn-ghost-light group">
+            <a href="/docs/company-profile.pdf" target="_blank" rel="noreferrer" className="btn-ghost-light">
               <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path
                   d="M8 2v8m0 0 3.2-3.2M8 10 4.8 6.8M2.5 12.5h11"
@@ -148,8 +141,9 @@ export default function Hero() {
               <div key={s.label}>
                 <dt className="sr-only">{s.label}</dt>
                 <dd>
-                  {/* Suffix rendered smaller so long units like "g/cm²" stay on one line */}
+                  {/* Prefix and suffix render smaller so long units stay on one line */}
                   <span className="block whitespace-nowrap font-display text-[26px] font-normal tracking-tight text-white sm:text-3xl">
+                    {s.prefix && <span className="mr-1 text-[13px] text-white/50">{s.prefix}</span>}
                     <Counter value={s.value} />
                     <span className="ml-0.5 text-[15px] text-white/70 sm:text-base">{s.suffix}</span>
                   </span>
@@ -182,9 +176,9 @@ export default function Hero() {
               />
             </div>
 
-            {/* Floating spec chips */}
+            {/* Floating spec chips — figures from the company's own product page */}
             {[
-              { text: 'GS 700 – 900 g/cm²', pos: 'left-[-14%] top-[14%]', delay: 1.15 },
+              { text: 'Super · 900 – 1200 g/cm²', pos: 'left-[-14%] top-[14%]', delay: 1.15 },
               { text: '80 – 120 mesh', pos: 'right-[-12%] top-[46%]', delay: 1.3 },
               { text: 'Nett 25 kg', pos: 'left-[-8%] bottom-[14%]', delay: 1.45 },
             ].map((chip) => (

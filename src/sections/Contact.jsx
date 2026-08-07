@@ -5,15 +5,17 @@ import SectionHeading from '../components/SectionHeading.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { COMPANY } from '../data/company.js'
 
-const EMPTY = { name: '', company: '', email: '', country: '', grade: '', volume: '', message: '' }
+const EMPTY = { name: '', email: '', company: '', message: '' }
+
+const inputClass =
+  'w-full rounded-lg border border-white/12 bg-white/[0.04] px-4 py-3 text-[14px] text-white ' +
+  'placeholder:text-white/25 transition-colors duration-300 focus:border-emerald-500 focus:bg-white/[0.07] ' +
+  'focus:outline-none focus:ring-1 focus:ring-emerald-500'
 
 function Field({ id, label, required, error, children }) {
   return (
-    <div className="relative">
-      <label
-        htmlFor={id}
-        className="mb-2 block text-[11px] font-semibold uppercase tracking-eyebrow text-white/45"
-      >
+    <div>
+      <label htmlFor={id} className="mb-2 block text-[11px] font-semibold uppercase tracking-eyebrow text-white/45">
         {label}
         {required && <span className="ml-1 text-emerald-400">*</span>}
       </label>
@@ -23,10 +25,27 @@ function Field({ id, label, required, error, children }) {
   )
 }
 
-const inputClass =
-  'w-full rounded-lg border border-white/12 bg-white/[0.04] px-4 py-3 text-[14px] text-white ' +
-  'placeholder:text-white/25 transition-colors duration-300 focus:border-emerald-500 focus:bg-white/[0.07] ' +
-  'focus:outline-none focus:ring-1 focus:ring-emerald-500'
+const ICONS = {
+  location: (
+    <>
+      <path d="M10 18.3s6-5 6-9.3a6 6 0 1 0-12 0c0 4.3 6 9.3 6 9.3Z" strokeWidth="1.5" strokeLinejoin="round" />
+      <circle cx="10" cy="9" r="2.2" strokeWidth="1.5" />
+    </>
+  ),
+  email: (
+    <>
+      <rect x="2.5" y="4.5" width="15" height="11" rx="1.8" strokeWidth="1.5" />
+      <path d="m3 6 7 5 7-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  phone: (
+    <path
+      d="M6.4 3.5H4.2c-.9 0-1.7.8-1.6 1.7.5 7 5.2 11.7 12.2 12.2.9.1 1.7-.7 1.7-1.6v-2.2c0-.7-.5-1.3-1.2-1.5l-2-.5c-.6-.1-1.2.1-1.5.6l-.6.9a10.6 10.6 0 0 1-4.4-4.4l.9-.6c.5-.3.7-.9.6-1.5l-.5-2c-.2-.7-.8-1.1-1.4-1.1Z"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
+    />
+  ),
+}
 
 export default function Contact() {
   const { t } = useI18n()
@@ -56,18 +75,16 @@ export default function Contact() {
 
     setStatus('sending')
     // NOTE: no backend is wired up yet. Point this at your form endpoint
-    // (e.g. Formspree, a serverless function, or the company CRM) to go live.
+    // (e.g. Formspree, a Cloudflare Worker, or the company CRM) to go live.
     await new Promise((resolve) => setTimeout(resolve, 900))
     setStatus('sent')
     setValues(EMPTY)
   }
 
-  const CONTACT_ROWS = [
-    { label: info.companyLabel, value: COMPANY.legalName },
-    { label: info.addressLabel, value: COMPANY.address },
-    { label: info.phoneLabel, value: COMPANY.phone, href: `tel:${COMPANY.phoneRaw}` },
-    { label: info.webLabel, value: COMPANY.website, href: `https://${COMPANY.website}` },
-    { label: info.hoursLabel, value: info.hours },
+  const ROWS = [
+    { icon: 'location', label: info.locationLabel, value: COMPANY.address },
+    { icon: 'email', label: info.emailLabel, value: COMPANY.email, href: `mailto:${COMPANY.email}` },
+    { icon: 'phone', label: info.phoneLabel, value: COMPANY.phone, href: `tel:${COMPANY.phoneRaw}` },
   ]
 
   return (
@@ -90,29 +107,48 @@ export default function Contact() {
             />
 
             <Reveal delay={0.24}>
-              <dl className="mt-11 max-w-lg space-y-0">
-                {CONTACT_ROWS.map((row) => (
-                  <div key={row.label} className="border-t border-white/10 py-4 last:border-b">
-                    <dt className="text-[10.5px] font-semibold uppercase tracking-eyebrow text-emerald-400">
-                      {row.label}
-                    </dt>
-                    <dd className="mt-1.5 text-[14.5px] leading-relaxed text-white/85">
-                      {row.href ? (
-                        <a
-                          href={row.href}
-                          target={row.href.startsWith('http') ? '_blank' : undefined}
-                          rel="noreferrer"
-                          className="transition-colors hover:text-emerald-400"
-                        >
-                          {row.value}
-                        </a>
-                      ) : (
-                        row.value
-                      )}
-                    </dd>
-                  </div>
+              <ul className="mt-11 max-w-lg space-y-3">
+                {ROWS.map((row) => (
+                  <li
+                    key={row.label}
+                    className="group flex gap-4 rounded-xl border border-white/10 bg-white/[0.035] p-5 transition-colors duration-300 hover:border-emerald-500/35 hover:bg-white/[0.06]"
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-300 ring-1 ring-emerald-500/25 transition-colors duration-300 group-hover:bg-emerald-500 group-hover:text-white">
+                      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" className="h-5 w-5" aria-hidden="true">
+                        {ICONS[row.icon]}
+                      </svg>
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-[10.5px] font-semibold uppercase tracking-eyebrow text-emerald-400">
+                        {row.label}
+                      </p>
+                      <p className="mt-1.5 break-words text-[14px] leading-relaxed text-white/85">
+                        {row.href ? (
+                          <a href={row.href} className="transition-colors hover:text-emerald-400">
+                            {row.value}
+                          </a>
+                        ) : (
+                          row.value
+                        )}
+                      </p>
+                    </div>
+                  </li>
                 ))}
-              </dl>
+              </ul>
+            </Reveal>
+
+            <Reveal delay={0.32}>
+              <a
+                href={COMPANY.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost-light mt-5 w-full sm:w-auto"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
+                  <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.1 14c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.6-.1-3-1.2-5-4.2-5.1-4.4-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.2-.3.3-.1.6.1.3.6 1.1 1.3 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4v1.3Z" />
+                </svg>
+                {form.whatsapp}
+              </a>
             </Reveal>
           </div>
 
@@ -128,7 +164,7 @@ export default function Contact() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="flex min-h-[26rem] flex-col items-center justify-center text-center"
+                      className="flex min-h-[24rem] flex-col items-center justify-center text-center"
                     >
                       <motion.span
                         initial={{ scale: 0 }}
@@ -157,7 +193,7 @@ export default function Contact() {
                         onClick={() => setStatus('idle')}
                         className="mt-6 text-[13px] font-semibold text-emerald-400 transition-colors hover:text-emerald-300"
                       >
-                        &larr; {t('contact.eyebrow')}
+                        &larr; {form.back}
                       </button>
                     </motion.div>
                   ) : (
@@ -174,38 +210,21 @@ export default function Contact() {
                         <input id="name" type="text" value={values.name} onChange={update('name')} className={inputClass} autoComplete="name" />
                       </Field>
 
-                      <Field id="company" label={form.company}>
-                        <input id="company" type="text" value={values.company} onChange={update('company')} className={inputClass} autoComplete="organization" />
-                      </Field>
-
                       <Field id="email" label={form.email} required error={errors.email}>
                         <input id="email" type="email" value={values.email} onChange={update('email')} className={inputClass} autoComplete="email" />
                       </Field>
 
-                      <Field id="country" label={form.country}>
-                        <input id="country" type="text" value={values.country} onChange={update('country')} className={inputClass} autoComplete="country-name" />
-                      </Field>
-
-                      <Field id="grade" label={form.grade}>
-                        <select id="grade" value={values.grade} onChange={update('grade')} className={`${inputClass} appearance-none`}>
-                          <option value="" className="bg-ink">&mdash;</option>
-                          {form.gradeOptions.map((opt) => (
-                            <option key={opt} value={opt} className="bg-ink">
-                              {opt}
-                            </option>
-                          ))}
-                        </select>
-                      </Field>
-
-                      <Field id="volume" label={form.volume}>
-                        <input id="volume" type="text" value={values.volume} onChange={update('volume')} className={inputClass} placeholder="e.g. 5 ton / month" />
-                      </Field>
+                      <div className="sm:col-span-2">
+                        <Field id="company" label={form.company}>
+                          <input id="company" type="text" value={values.company} onChange={update('company')} className={inputClass} autoComplete="organization" />
+                        </Field>
+                      </div>
 
                       <div className="sm:col-span-2">
                         <Field id="message" label={form.message} required error={errors.message}>
                           <textarea
                             id="message"
-                            rows={4}
+                            rows={6}
                             value={values.message}
                             onChange={update('message')}
                             placeholder={form.messagePlaceholder}
@@ -247,4 +266,3 @@ export default function Contact() {
     </section>
   )
 }
-

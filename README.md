@@ -38,10 +38,10 @@ src/
    ├─ Navbar.jsx            ├─ Quality.jsx
    ├─ Hero.jsx              ├─ Applications.jsx
    ├─ TrustBar.jsx          ├─ Facility.jsx
-   ├─ About.jsx             ├─ ExportReadiness.jsx
+   ├─ About.jsx             ├─ Faq.jsx
+   ├─ VisionMission.jsx     ├─ Downloads.jsx
    ├─ Products.jsx          ├─ Contact.jsx
    ├─ Specifications.jsx    └─ Footer.jsx
-   ├─ Process.jsx
 ```
 
 `public/assets/` holds brand, product, facility and application imagery;
@@ -92,6 +92,24 @@ every one of them respects `prefers-reduced-motion`. Viewport margins are
 written long-hand (`'0px 0px -80px 0px'`) — a bare `'-80px'` also shrinks the
 observer root horizontally, which stops narrow elements near the left edge from
 ever triggering.
+
+## Content sourcing
+
+Every user-facing string traces back to material the company itself
+published: sriguntingpratama.com, its product detail pages, and the Export
+Technical Company Profile / QC Datasheet PDFs. The vision, mission, product
+descriptions and FAQ answers are reproduced verbatim rather than rewritten,
+so the site reads as the same company as the old one.
+
+**Known discrepancy to confirm.** The live site lists bulk grades as Super
+(900–1200 g/cm²), Premium (750–850) and Standard (600–700). The
+`QC_Datasheet_Checklist.pdf` in this folder instead lists GS 700 / GS 800 /
+GS 900. This site follows the website's Super / Premium / Standard naming.
+Check which one is current before quoting either to a buyer.
+
+Also note both "Downloads" links on the old site serve the same 19 MB scanned
+catalogue, so no separate production-capacity figures exist yet. None were
+invented here.
 
 ## Before going live
 
