@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import Reveal, { RevealGroup, revealChild } from '../components/Reveal.jsx'
+import { COMPANY } from '../data/company.js'
 
 const ICONS = [
   // Quality consistency — shield with check
@@ -26,6 +27,7 @@ const ICONS = [
 
 export default function About() {
   const { t } = useI18n()
+  const reduceMotion = useReducedMotion()
   const body = t('about.body')
   const highlights = t('about.highlights')
 
@@ -72,31 +74,57 @@ export default function About() {
 
           {/* ---- Facility visual ---- */}
           <div className="lg:col-span-6">
+            {/* Branded panel standing in for the facility photo until a
+                final image is chosen. Swap the inner block back to an <img>
+                when the photo is ready — the frame and caption stay as-is. */}
             <Reveal y={40} duration={0.9} className="relative lg:sticky lg:top-28">
-              <div className="relative overflow-hidden rounded-2xl bg-ink shadow-[0_40px_80px_-40px_rgba(11,16,13,0.5)]">
-                <img
-                  src="/assets/facility/yard-drying.jpg"
-                  alt={t('facility.captions.yard-drying')}
-                  className="aspect-[4/3] w-full object-cover opacity-90 transition-transform duration-[1.2s] ease-out hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
+              <div className="relative isolate flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl bg-ink shadow-[0_40px_80px_-40px_rgba(11,16,13,0.5)]">
+                <div aria-hidden="true" className="absolute inset-0 -z-10">
+                  <div className="absolute inset-0 bg-[radial-gradient(110%_85%_at_50%_18%,#123a26_0%,#0B100D_62%)]" />
+                  <div className="absolute inset-0 bg-grain opacity-[0.16] mix-blend-overlay" />
+                </div>
+
+                {/* Concentric rings echoing the seaweed circle in the mark */}
+                <div aria-hidden="true" className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2">
+                  {[220, 330, 450].map((size, i) => (
+                    <motion.div
+                      key={size}
+                      animate={reduceMotion ? {} : { rotate: i % 2 === 0 ? 360 : -360 }}
+                      transition={{ duration: 80 + i * 26, repeat: Infinity, ease: 'linear' }}
+                      style={{ width: size, height: size, marginLeft: -size / 2, marginTop: -size / 2 }}
+                      className="absolute rounded-full border border-dashed border-white/[0.09]"
+                    />
+                  ))}
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.86 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative -mt-8 flex flex-col items-center px-8 text-center"
+                >
+                  <span className="flex h-32 w-32 items-center justify-center rounded-full bg-white shadow-[0_24px_50px_-18px_rgba(0,0,0,0.6)] sm:h-40 sm:w-40">
+                    <img
+                      src="/assets/brand/logo.png"
+                      alt={COMPANY.legalName}
+                      className="h-24 w-24 object-contain sm:h-28 sm:w-28"
+                    />
+                  </span>
+                  <p className="mt-6 font-display text-2xl font-light tracking-tight text-white sm:text-[28px]">
+                    {COMPANY.legalName}
+                  </p>
+                  <span className="mt-2 text-[10px] font-semibold uppercase tracking-eyebrow text-emerald-400">
+                    Agar &amp; Seaweed Extract
+                  </span>
+                </motion.div>
+
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
                   <span className="eyebrow text-emerald-300">{t('about.locationLabel')}</span>
                   <p className="mt-2 font-display text-xl font-light text-white">{t('about.locationValue')}</p>
                 </div>
               </div>
-
-              {/* Floating logo badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.45, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -left-4 -top-6 hidden h-24 w-24 items-center justify-center rounded-full bg-white shadow-[0_20px_40px_-16px_rgba(11,16,13,0.4)] ring-1 ring-ink/5 sm:flex"
-              >
-                <img src="/assets/brand/logo.png" alt="" className="h-16 w-16 object-contain" />
-              </motion.div>
             </Reveal>
           </div>
         </div>
