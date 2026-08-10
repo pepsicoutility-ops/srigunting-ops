@@ -196,6 +196,18 @@ export default {
     eyebrow: 'Fasilitas Kami',
     title: 'Randu Agung, Singosari — Malang',
     lead: 'Ekstraksi, pengepresan, pengeringan, penggilingan, pengemasan, dan pergudangan dalam satu lokasi terintegrasi di Jawa Timur.',
+    planLabel: 'Denah tapak',
+    planScale: 'Tidak berskala',
+    planNote:
+      'Satu area, satu alur: rumput laut masuk lewat gerbang dan keluar sebagai barang jadi terkemas. Arahkan kursor ke sebuah tahap untuk melihat letaknya di denah.',
+    meta: {
+      'extraction-line': 'Penerimaan Gracilaria',
+      'press-line': 'Penirisan hidrolik',
+      'yard-drying': 'Dikeringkan hingga ≤ 14%',
+      'milling-room': 'Digiling 80 – 120 mesh',
+      warehouse: 'Dikemas 25 kg per sak',
+      office: 'Pesanan & pengiriman',
+    },
     captions: {
       'yard-drying': 'Rak pengeringan terbuka dan area proses',
       'extraction-line': 'Ruang ekstraksi dan pengepresan',

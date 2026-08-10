@@ -198,6 +198,18 @@ export default {
     eyebrow: 'Our Facility',
     title: 'Randu Agung, Singosari — Malang',
     lead: 'Extraction, pressing, drying, milling, packing and warehousing on a single integrated site in East Java.',
+    planLabel: 'Site plan',
+    planScale: 'Not to scale',
+    planNote:
+      'One perimeter, one flow: raw seaweed enters at the gate and leaves as packed finished goods. Hover a stage to locate it on the plan.',
+    meta: {
+      'extraction-line': 'Gracilaria intake',
+      'press-line': 'Hydraulic dewatering',
+      'yard-drying': 'Dried to ≤ 14% moisture',
+      'milling-room': 'Milled to 80 – 120 mesh',
+      warehouse: 'Packed 25 kg per sack',
+      office: 'Orders & dispatch',
+    },
     captions: {
       'yard-drying': 'Open-air drying racks and processing yard',
       'extraction-line': 'Extraction and pressing hall',

@@ -11,12 +11,14 @@ export const COMPANY = {
   address:
     'Jl. Perusahaan gang Industri No.1, Randu Agung, Singosari, Malang 65153, Jawa Timur, Indonesia',
   addressShort: 'Randu Agung, Singosari — Malang 65153, Jawa Timur',
-  phone: '+62 811 360 010',
-  phoneRaw: '+62811360010',
+  // Single company number for every tel: link, the header, the footer and the
+  // WhatsApp deep link. Change it here and it changes everywhere.
+  phone: '+62 823-3074-9536',
+  phoneRaw: '+6282330749536',
   email: 'info@sriguntingpratama.com',
   website: 'sriguntingpratama.com',
   whatsapp:
-    "https://api.whatsapp.com/send?phone=62811360010&text=I'm%20interested%20in%20your%20provided%20service",
+    "https://api.whatsapp.com/send?phone=6282330749536&text=I'm%20interested%20in%20your%20provided%20service",
 }
 
 export const SOCIALS = [
