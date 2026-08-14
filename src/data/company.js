@@ -13,12 +13,12 @@ export const COMPANY = {
   addressShort: 'Randu Agung, Singosari — Malang 65153, Jawa Timur',
   // Single company number for every tel: link, the header, the footer and the
   // WhatsApp deep link. Change it here and it changes everywhere.
-  phone: '+62 823-3074-9536',
-  phoneRaw: '+6282330749536',
+  phone: '+62 818-827-770',
+  phoneRaw: '+62818827770',
   email: 'info@sriguntingpratama.com',
   website: 'sriguntingpratama.com',
   whatsapp:
-    "https://api.whatsapp.com/send?phone=6282330749536&text=I'm%20interested%20in%20your%20provided%20service",
+    "https://api.whatsapp.com/send?phone=62818827770&text=I'm%20interested%20in%20your%20provided%20service",
 }
 
 export const SOCIALS = [
@@ -77,7 +77,9 @@ export const NAV_LINKS = [
   { id: 'about', key: 'nav.about' },
   { id: 'products', key: 'nav.products' },
   { id: 'quality', key: 'nav.quality' },
-  { id: 'facility', key: 'nav.facility' },
+  // 'facility' is deliberately omitted while the Facility section is off
+  // the page (see App.jsx) — re-add { id: 'facility', key: 'nav.facility' }
+  // here, in the same position, when the section comes back.
   { id: 'faq', key: 'nav.faq' },
   { id: 'downloads', key: 'nav.downloads' },
 ]

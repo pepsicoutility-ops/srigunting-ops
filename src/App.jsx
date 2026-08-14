@@ -7,7 +7,10 @@ import Products from './sections/Products.jsx'
 import Specifications from './sections/Specifications.jsx'
 import Quality from './sections/Quality.jsx'
 import Applications from './sections/Applications.jsx'
-import Facility from './sections/Facility.jsx'
+// Facility is temporarily off the page while better site photography is
+// shot — see the note above NAV_LINKS in data/company.js for how to bring
+// both the section and its nav link back together.
+// import Facility from './sections/Facility.jsx'
 import Faq from './sections/Faq.jsx'
 import Downloads from './sections/Downloads.jsx'
 import Contact from './sections/Contact.jsx'
@@ -35,7 +38,6 @@ export default function App() {
         <Specifications />
         <Quality />
         <Applications />
-        <Facility />
         <Faq />
         <Downloads />
         <Contact />
