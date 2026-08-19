@@ -13,19 +13,28 @@ export const COMPANY = {
   addressShort: 'Randu Agung, Singosari — Malang 65153, Jawa Timur',
   // Single company number for every tel: link, the header, the footer and the
   // WhatsApp deep link. Change it here and it changes everywhere.
-  phone: '+62 818-827-770',
-  phoneRaw: '+62818827770',
-  email: 'info@sriguntingpratama.com',
-  website: 'sriguntingpratama.com',
+  phone: '+62 818-807-772',
+  phoneRaw: '+62818807772',
+  email: 'info@srigunting.id',
+  website: 'srigunting.id',
+  url: 'https://srigunting.id',
   whatsapp:
-    "https://api.whatsapp.com/send?phone=62818827770&text=I'm%20interested%20in%20your%20provided%20service",
+    "https://api.whatsapp.com/send?phone=62818807772&text=I'm%20interested%20in%20your%20provided%20service",
 }
 
+/**
+ * `verified: true` marks a profile confirmed to actually resolve; only those
+ * are published in the schema.org `sameAs` list, because pointing Google at a
+ * profile that does not exist weakens the entity rather than helping it.
+ *
+ * The old Facebook and X entries were removed: the Facebook URL served an
+ * error page and X handles cannot contain hyphens, so neither could have been
+ * the real profile. Add real ones here (with `verified: true`) when they exist
+ * — Footer.jsx renders whatever is in this list and already has the icons.
+ */
 export const SOCIALS = [
   { label: 'WhatsApp', href: COMPANY.whatsapp, icon: 'whatsapp' },
-  { label: 'Instagram', href: 'https://instagram.com/ontheseaweed', icon: 'instagram' },
-  { label: 'Facebook', href: 'https://www.facebook.com/sri-gunting-pratama/', icon: 'facebook' },
-  { label: 'X / Twitter', href: 'https://www.twitter.com/sri-gunting-pratama/', icon: 'twitter' },
+  { label: 'Instagram', href: 'https://instagram.com/ontheseaweed', icon: 'instagram', verified: true },
 ]
 
 /** Downloadable documents, mirroring the old site's Downloads section. */
@@ -77,6 +86,7 @@ export const NAV_LINKS = [
   { id: 'about', key: 'nav.about' },
   { id: 'products', key: 'nav.products' },
   { id: 'quality', key: 'nav.quality' },
+  { id: 'recipes', key: 'nav.recipes' },
   // 'facility' is deliberately omitted while the Facility section is off
   // the page (see App.jsx) — re-add { id: 'facility', key: 'nav.facility' }
   // here, in the same position, when the section comes back.

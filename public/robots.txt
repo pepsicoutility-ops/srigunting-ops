@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Full-size source PDFs are linked from the Downloads section and may be
+# indexed; nothing on this site needs to be hidden from crawlers.
+
+Sitemap: https://srigunting.id/sitemap.xml

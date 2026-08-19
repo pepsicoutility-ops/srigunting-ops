@@ -13,6 +13,7 @@ const IMAGES = [
 export default function Applications() {
   const { t } = useI18n()
   const items = t('applications.items')
+  const alts = t('applications.alts')
 
   return (
     <section id="applications" className="relative overflow-hidden bg-cream py-24 sm:py-32">
@@ -34,7 +35,7 @@ export default function Applications() {
             >
               <img
                 src={IMAGES[i]}
-                alt=""
+                alt={alts[i]}
                 loading="lazy"
                 className="absolute inset-0 -z-10 h-full w-full object-cover opacity-75 transition-[transform,opacity] duration-[1.1s] ease-out group-hover:scale-110 group-hover:opacity-90"
               />

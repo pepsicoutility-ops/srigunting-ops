@@ -170,7 +170,7 @@ export default function Hero() {
             <div className="animate-float">
               <img
                 src="/assets/products/bulk-25kg.png"
-                alt=""
+                alt={t('hero.imageAlt')}
                 className="max-h-[56vh] w-auto max-w-full object-contain drop-shadow-[0_45px_70px_rgba(0,0,0,0.55)] 2xl:max-h-[60vh] 2xl:max-w-[34rem]"
                 loading="eager"
               />

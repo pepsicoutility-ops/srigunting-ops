@@ -28,7 +28,7 @@ export default function Faq() {
           <Reveal delay={0.28} className="mt-9 hidden lg:block">
             <img
               src="/assets/products/wisespoon-agar-pouch.png"
-              alt=""
+              alt={t('faq.imageAlt')}
               loading="lazy"
               className="w-full max-w-[19rem] object-contain drop-shadow-[0_25px_45px_rgba(11,16,13,0.18)]"
             />

@@ -37,11 +37,13 @@ src/
 └─ sections/                # one file per section
    ├─ Navbar.jsx            ├─ Quality.jsx
    ├─ Hero.jsx              ├─ Applications.jsx
-   ├─ TrustBar.jsx          ├─ Facility.jsx
-   ├─ About.jsx             ├─ Faq.jsx
-   ├─ VisionMission.jsx     ├─ Downloads.jsx
-   ├─ Products.jsx          ├─ Contact.jsx
-   ├─ Specifications.jsx    └─ Footer.jsx
+   ├─ TrustBar.jsx          ├─ Recipes.jsx
+   ├─ About.jsx             ├─ Facility.jsx
+   ├─ VisionMission.jsx     ├─ Faq.jsx
+   ├─ Products.jsx          ├─ Downloads.jsx
+   ├─ Specifications.jsx    ├─ Contact.jsx
+   └─ seo/                  └─ Footer.jsx
+      └─ structuredData.js  # schema.org graph, inlined at build time
 ```
 
 `public/assets/` holds brand, product, facility and application imagery;
@@ -101,6 +103,14 @@ Technical Company Profile / QC Datasheet PDFs. The vision, mission, product
 descriptions and FAQ answers are reproduced verbatim rather than rewritten,
 so the site reads as the same company as the old one.
 
+**Recipe section imagery is stock.** `sections/Recipes.jsx` and everything
+under `public/assets/recipes/` use Pexels-licensed photography (free for
+commercial use, no attribution required) as a stand-in for the company's own
+dessert shots. Swap the files in place — the filenames and 4:5 / 4:3 crops are
+what keep the gallery grid flush — and nothing else needs to change. The recipes
+themselves are standard preparations consistent with the ratios the FAQ quotes;
+have the kitchen confirm them before they go on printed material.
+
 **Known discrepancy to confirm.** The live site lists bulk grades as Super
 (900–1200 g/cm²), Premium (750–850) and Standard (600–700). The
 `QC_Datasheet_Checklist.pdf` in this folder instead lists GS 700 / GS 800 /
@@ -118,3 +128,75 @@ invented here.
   form endpoint (Formspree, a serverless function, or the company CRM).
 - Confirm the phone number and website in `src/data/company.js`.
 - Replace `public/docs/*.pdf` whenever the source documents are updated.
+- **Dead social links.** The Facebook URL in `SOCIALS` serves an error page and
+  the X/Twitter one cannot be real (X handles disallow hyphens). They are still
+  rendered in the footer but deliberately excluded from the schema.org `sameAs`
+  list — see the `verified` flag in `src/data/company.js`.
+
+## SEO
+
+| Where | What |
+|---|---|
+| `index.html` | Title/description, canonical, robots, Open Graph + Twitter cards, `geo.*`, hero preload |
+| `src/seo/structuredData.js` | `Organization`/`LocalBusiness`, `WebSite`, `WebPage`, `FAQPage` and one `Recipe` per card |
+| `vite.config.js` | `structured-data` plugin inlines that graph into `dist/index.html` |
+| `public/robots.txt` | Allows everything, points at the sitemap |
+| `public/sitemap.xml` | Home page (with `image:image` entries) plus the two public PDFs |
+| `public/assets/brand/og-cover.jpg` | 1200x630 share card |
+
+The graph is derived from `data/company.js` and `i18n/id.js`, so editing the
+copy updates the markup — there is no second place to keep in sync. It is built
+in Indonesian because that is the primary market; Google reads JSON-LD
+regardless of which language the page renders in.
+
+**`sameAs` only lists profiles confirmed to resolve** (the `verified` flag in
+`data/company.js`). Pointing Google at a profile that does not exist weakens the
+entity rather than helping it.
+
+### Prerendering
+
+`npm run build` is three steps: the client bundle, an SSR bundle from
+`src/entry-server.jsx`, then `scripts/prerender.mjs`, which renders the app to
+static markup and writes it into `dist/index.html`.
+
+It exists because the page is client-rendered and a crawler arriving with an
+`en-*` Accept-Language header — Googlebot does — would run the app and get the
+English copy, while Indonesian is the market the site is trying to rank in. The
+static HTML now carries the Indonesian version and needs no JavaScript to read.
+
+It is **not** a hydration payload. `main.jsx` still mounts with `createRoot()`,
+which replaces the prerendered DOM wholesale, so there is no server/client
+contract to keep in sync. Three details make it work:
+
+- **Entrance styles are stripped.** framer-motion renders its `initial` prop, so
+  every scroll-reveal element would ship as `opacity:0` — invisible markup that
+  reads as hidden content. `stripEntranceStyles` drops `opacity:0` and
+  `transform` from the prerendered HTML only; the browser bundle is untouched
+  and the animations still run. (`MotionConfig isStatic` does not suppress this
+  in framer-motion 11 — it was tried.)
+- **`Counter` starts at its real figure** and resets to 0 in a layout effect, so
+  the static HTML says `1200 g/cm²` instead of `0 g/cm²` while the count-up
+  still animates on screen.
+- **A guard script clears the prerendered DOM for non-Indonesian visitors**,
+  before paint, so they never see an Indonesian flash. Keep it in step with
+  `detectInitialLanguage()` if the language rules change.
+
+Cost: `index.html` goes from ~4 kB to ~15 kB brotli. Verify after changing any
+of this by loading the built site with JavaScript disabled — you should get the
+full Indonesian page.
+
+### Submitting the sitemap
+
+`robots.txt` points at it and Cloudflare appends the file to its own managed
+block, so the `Sitemap:` line survives. Google no longer accepts sitemap pings;
+submit `https://srigunting.id/sitemap.xml` under **Indexing -> Sitemaps** in
+Search Console once the property is verified.
+
+### Image budget
+
+Product PNGs and application photos are re-encoded to roughly twice their
+largest rendered size. When adding art, keep transparency in mind: quantising
+an RGBA image folds alpha into the palette and leaves every opaque pixel
+slightly see-through, and saving a palette PNG with `optimize=True` renumbers
+the palette so the `tRNS` chunk points at the wrong entry and the image goes
+fully opaque. Quantise the colour channels and put the original alpha back.

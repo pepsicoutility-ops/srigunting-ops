@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+  <url>
+    <loc>https://srigunting.id/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://srigunting.id/assets/products/bulk-25kg.png</image:loc>
+      <image:title>Tepung agar-agar curah 25 kg PT. Sri Gunting Pratama</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://srigunting.id/assets/recipes/molded-red.jpg</image:loc>
+      <image:title>Puding cetak dari tepung agar-agar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://srigunting.id/assets/recipes/recipe-santan.jpg</image:loc>
+      <image:title>Resep puding santan gula merah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://srigunting.id/assets/recipes/recipe-lapis.jpg</image:loc>
+      <image:title>Resep agar-agar lapis buah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://srigunting.id/assets/recipes/recipe-cokelat.jpg</image:loc>
+      <image:title>Resep puding cokelat lembut</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://srigunting.id/assets/recipes/recipe-jellycup.jpg</image:loc>
+      <image:title>Resep jelly cup buah</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://srigunting.id/docs/company-profile.pdf</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://srigunting.id/docs/product-catalog.pdf</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

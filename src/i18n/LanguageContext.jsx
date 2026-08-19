@@ -23,8 +23,14 @@ function resolve(dict, path) {
   return path.split('.').reduce((acc, key) => (acc == null ? undefined : acc[key]), dict)
 }
 
-export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(detectInitialLanguage)
+/**
+ * `initialLang` forces a starting language instead of sniffing the browser.
+ * The build-time prerender (scripts/prerender.mjs) passes 'id' so the static
+ * HTML a crawler receives is Indonesian; the browser bundle omits it and keeps
+ * detecting as before.
+ */
+export function LanguageProvider({ children, initialLang }) {
+  const [lang, setLang] = useState(() => initialLang ?? detectInitialLanguage())
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, lang)

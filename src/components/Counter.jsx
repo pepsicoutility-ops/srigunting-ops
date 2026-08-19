@@ -1,5 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useInView, useReducedMotion } from 'framer-motion'
+
+// useLayoutEffect warns during the build-time prerender, where effects never
+// run anyway. In the browser it stays a layout effect so the reset to 0 lands
+// before paint and the final figure is never briefly visible.
+const useResetEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
 
 /** Counts up to `value` once the element scrolls into view. */
 export default function Counter({ value, suffix = '', duration = 1600, className = '' }) {
@@ -9,7 +14,14 @@ export default function Counter({ value, suffix = '', duration = 1600, className
   // then never register as intersecting.
   const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' })
   const reduceMotion = useReducedMotion()
-  const [display, setDisplay] = useState(0)
+  // Start at the real figure so the build-time prerender puts "1200" — not
+  // "0" — into the static HTML a crawler reads. The browser resets it to 0
+  // in a layout effect before paint, so the count-up still runs on screen.
+  const [display, setDisplay] = useState(value)
+
+  useResetEffect(() => {
+    setDisplay(0)
+  }, [])
 
   useEffect(() => {
     if (!inView) return
