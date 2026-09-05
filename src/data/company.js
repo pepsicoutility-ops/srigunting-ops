@@ -87,12 +87,10 @@ export const NAV_LINKS = [
   { id: 'products', key: 'nav.products' },
   { id: 'quality', key: 'nav.quality' },
   { id: 'recipes', key: 'nav.recipes' },
+  { id: 'news', key: 'nav.news' },
   // 'facility' is deliberately omitted while the Facility section is off
   // the page (see App.jsx) — re-add { id: 'facility', key: 'nav.facility' }
   // here, in the same position, when the section comes back.
   { id: 'faq', key: 'nav.faq' },
   { id: 'downloads', key: 'nav.downloads' },
-  // `href` marks a real page rather than an on-page anchor; the Navbar and
-  // Footer render it as-is and the scroll-spy skips it.
-  { id: 'news', key: 'nav.news', href: '/news' },
 ]

@@ -1,26 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'node:path'
-import { buildStructuredData, buildNewsStructuredData } from './src/seo/structuredData.js'
+import { buildStructuredData } from './src/seo/structuredData.js'
 import { COMPANY } from './src/data/company.js'
 import { NEWS_SORTED } from './src/data/news.js'
 
 /**
- * Inlines the schema.org graph into each page at build time. Keeping it out of
+ * Inlines the schema.org graph into index.html at build time. Keeping it out of
  * the React tree means crawlers see it in the raw HTML response instead of
  * having to render the app first, while it still derives from the same copy
- * the pages show (see src/seo/structuredData.js).
+ * the page shows (see src/seo/structuredData.js).
  */
 function structuredData() {
   return {
     name: 'structured-data',
-    transformIndexHtml(html, ctx) {
-      const isNews = /news\.html$/.test(ctx.filename ?? ctx.path ?? '')
+    transformIndexHtml() {
       return [
         {
           tag: 'script',
           attrs: { type: 'application/ld+json' },
-          children: JSON.stringify(isNews ? buildNewsStructuredData() : buildStructuredData()),
+          children: JSON.stringify(buildStructuredData()),
           injectTo: 'head',
         },
       ]
@@ -62,7 +60,9 @@ function sitemap() {
     name: 'sitemap',
     generateBundle() {
       const today = new Date().toISOString().slice(0, 10)
-      const latestNews = NEWS_SORTED[0]?.date ?? today
+      // The news section is on the landing page, so a new post is a change to
+      // that page — its date drives lastmod.
+      const newest = NEWS_SORTED[0]?.date ?? today
 
       const newsImages = NEWS_SORTED.flatMap((post) => [
         [post.cover.src, post.title.id],
@@ -72,10 +72,11 @@ function sitemap() {
       const entries = [
         urlEntry({
           loc: `${site}/`,
-          lastmod: today,
+          lastmod: newest,
           changefreq: 'monthly',
           priority: '1.0',
           images: [
+            ...newsImages,
             ['/assets/products/bulk-25kg.png', 'Tepung agar-agar curah 25 kg PT. Sri Gunting Pratama'],
             ['/assets/recipes/molded-red.jpg', 'Puding cetak dari tepung agar-agar'],
             ['/assets/recipes/recipe-santan.jpg', 'Resep puding santan gula merah'],
@@ -83,13 +84,6 @@ function sitemap() {
             ['/assets/recipes/recipe-cokelat.jpg', 'Resep puding cokelat lembut'],
             ['/assets/recipes/recipe-jellycup.jpg', 'Resep jelly cup buah'],
           ],
-        }),
-        urlEntry({
-          loc: `${site}/news`,
-          lastmod: latestNews,
-          changefreq: 'monthly',
-          priority: '0.8',
-          images: newsImages,
         }),
         urlEntry({
           loc: `${site}/docs/company-profile.pdf`,
@@ -124,14 +118,4 @@ function sitemap() {
 export default defineConfig({
   plugins: [react(), structuredData(), sitemap()],
   server: { port: 5173, open: true },
-  build: {
-    rollupOptions: {
-      // Two static pages, no client router: Cloudflare's asset handling serves
-      // /news from news.html, so each page keeps its own <head> and prerender.
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        news: resolve(__dirname, 'news.html'),
-      },
-    },
-  },
 })

@@ -38,6 +38,7 @@ src/
    ├─ Navbar.jsx            ├─ Quality.jsx
    ├─ Hero.jsx              ├─ Applications.jsx
    ├─ TrustBar.jsx          ├─ Recipes.jsx
+   │                        ├─ News.jsx
    ├─ About.jsx             ├─ Facility.jsx
    ├─ VisionMission.jsx     ├─ Faq.jsx
    ├─ Products.jsx          ├─ Downloads.jsx
@@ -138,7 +139,7 @@ invented here.
 | Where | What |
 |---|---|
 | `index.html` | Title/description, canonical, robots, Open Graph + Twitter cards, `geo.*`, hero preload |
-| `src/seo/structuredData.js` | Landing page: `Organization`/`LocalBusiness`, `WebSite`, `WebPage`, `FAQPage`, one `Recipe` per card. `/news`: `CollectionPage`, `BreadcrumbList`, one `NewsArticle` per post |
+| `src/seo/structuredData.js` | `Organization`/`LocalBusiness`, `WebSite`, `WebPage`, `FAQPage`, one `Recipe` per card, one `NewsArticle` per post |
 | `vite.config.js` | `structured-data` plugin inlines that graph into `dist/index.html` |
 | `public/robots.txt` | Allows everything, points at the sitemap |
 | `vite.config.js` | `sitemap` plugin emits `sitemap.xml` from `company.js` + `news.js` |
@@ -155,9 +156,10 @@ entity rather than helping it.
 
 ### Prerendering
 
-`npm run build` runs the client bundle, one SSR bundle per page, then
-`scripts/prerender.mjs`, which renders each page to static markup and writes it
-into its `dist/*.html`. Add a page by adding it to `PAGES` in that script and to
+`npm run build` runs the client bundle, an SSR bundle from
+`src/entry-server.jsx`, then `scripts/prerender.mjs`, which renders the page to
+static markup and writes it into `dist/index.html`. The script loops over a
+`PAGES` list, so a second static page would be an entry there plus a
 `build.rollupOptions.input` in `vite.config.js`.
 
 It exists because the page is client-rendered and a crawler arriving with an
@@ -186,38 +188,51 @@ Cost: `index.html` goes from ~4 kB to ~15 kB brotli. Verify after changing any
 of this by loading the built site with JavaScript disabled — you should get the
 full Indonesian page.
 
-## The News page
+## The News section
 
-`/news` is a second static page, not a client route: `news.html` is a Vite
-entry alongside `index.html`, so it keeps its own `<head>`, its own prerender
-and its own schema.org graph. Cloudflare's asset handling serves `/news` from
-`news.html`, so there is no router or SPA fallback to configure.
+`sections/News.jsx` is part of the landing page, at `#news`. It shows the
+newest post as a write-up on one side and every photo from the day in an
+auto-advancing carousel on the other — the carousel is what keeps the section
+short, since seven photos occupy the footprint of one.
 
 **To change what it shows, edit `src/data/news.js` — that is the only file.**
 Copy the existing entry, give it a new `slug` and `date`, drop the photos into
-`public/assets/news/<slug>/` and point at them. The page renders the newest
-post in full and everything older as cards; the sitemap entry, its `lastmod`,
-the image list and the `NewsArticle` markup all follow from the same data.
+`public/assets/news/<slug>/` and point at them. The newest entry is written out
+in full; anything older becomes a dated line beneath it, so past items stay on
+the page without growing the section. The sitemap's image list, the page
+`lastmod` and the `NewsArticle` markup all follow from the same data.
 
 Both languages live in that file rather than in `i18n/id.js` + `i18n/en.js`. A
 post is one piece of content, so adding one should mean editing one file
-instead of keeping two arrays aligned by index. The page's own chrome — labels,
-buttons, the heading — still comes from the dictionaries under `news.*`.
+instead of keeping two arrays aligned by index. The section's own chrome —
+heading, carousel labels — still comes from the dictionaries under `news.*`.
 
-Photos are cropped to 4:5 (gallery) and 16:9 (cover) so the grid stays flush at
-every breakpoint, the same rule the recipe gallery follows.
+Photos are cropped to 4:5 (gallery) and 16:9 (cover); the carousel renders them
+in a 4:3 frame with `object-cover`.
 
-`NAV_LINKS` entries carry an optional `href`. With it, the Navbar and Footer
-render a real page link and the scroll-spy skips the entry; without it they
-build an on-page anchor as before. `Footer` also takes a `base` prop, set to
-`/` on sub-pages so `#about` resolves back to the landing page.
+### The carousel
+
+`components/Carousel.jsx` is generic — pass it `slides` and `labels`. Two
+things about it are deliberate and worth keeping:
+
+- **The track animates in pixels, not percentages.** `drag` writes to the same
+  `x` motion value, and mixing units makes the slide jump when a drag ends. The
+  width comes from a `ResizeObserver`; it is 0 during the prerender, which
+  simply leaves slide one in place.
+- **Autoplay stops on hover, on focus within, while the tab is hidden, and
+  entirely under `prefers-reduced-motion`.** Motion a reader cannot pause is
+  what makes carousels hostile. The caption is a live region, but only
+  announces while autoplay is paused.
+
+All slides stay in the DOM (inactive ones `inert`), so every photo and its alt
+text is in the prerendered HTML even though one is visible at a time.
 
 ### Submitting the sitemap
 
 `robots.txt` points at it and Cloudflare appends the file to its own managed
-block, so the `Sitemap:` line survives. Google no longer accepts sitemap pings;
-submit `https://srigunting.id/sitemap.xml` under **Indexing -> Sitemaps** in
-Search Console once the property is verified.
+block, so the `Sitemap:` line survives. It is already submitted under
+**Indexing -> Sitemaps** in Search Console; Google re-reads it on its own, so a
+new build needs no resubmission.
 
 ### Image budget
 

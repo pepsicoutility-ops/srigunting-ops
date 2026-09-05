@@ -14,11 +14,7 @@ const SOCIAL_PATHS = {
     'M18.2 2.3h3.3l-7.2 8.3 8.5 11.1h-6.7l-5.2-6.8-6 6.8H1.6l7.7-8.8L1.2 2.3H8l4.7 6.2 5.5-6.2Zm-1.2 17.5h1.8L7.1 4.1H5.2l11.8 15.7Z',
 }
 
-/**
- * `base` prefixes the one-page anchors. It is '' on the landing page and '/'
- * on a sub-page such as /news, where a bare '#about' would resolve to nothing.
- */
-export default function Footer({ base = '' }) {
+export default function Footer() {
   const { t } = useI18n()
   const year = new Date().getFullYear()
 
@@ -30,7 +26,7 @@ export default function Footer({ base = '' }) {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Brand block */}
           <div className="lg:col-span-4">
-            <a href={base || '#top'} className="flex items-center gap-3.5">
+            <a href="#top" className="flex items-center gap-3.5">
               <img src="/assets/brand/logo.png" alt="" className="h-12 w-12 rounded-full bg-white object-contain p-0.5" />
               <span>
                 <span className="block font-display text-lg font-semibold tracking-tight">{COMPANY.legalName}</span>
@@ -52,9 +48,9 @@ export default function Footer({ base = '' }) {
             <nav aria-label={t('footer.usefulLinks')}>
               <h2 className="eyebrow text-white/35">{t('footer.usefulLinks')}</h2>
               <ul className="mt-5 space-y-2.5">
-                {NAV_LINKS.map(({ id, key, href }) => (
+                {NAV_LINKS.map(({ id, key }) => (
                   <li key={id}>
-                    <a href={href ?? `${base}#${id}`} className="text-[13.5px] text-white/65 transition-colors duration-300 hover:text-emerald-400">
+                    <a href={`#${id}`} className="text-[13.5px] text-white/65 transition-colors duration-300 hover:text-emerald-400">
                       {t(key)}
                     </a>
                   </li>

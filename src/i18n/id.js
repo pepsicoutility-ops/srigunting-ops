@@ -205,14 +205,13 @@ export default {
     eyebrow: 'Berita',
     title: 'Kabar dari lapangan',
     lead: 'Catatan kegiatan PT Sri Gunting Pratama bersama pelanggan, mitra, dan warga di sekitar pabrik.',
-    galleryLabel: 'Galeri kegiatan',
     archiveTitle: 'Kabar sebelumnya',
-    backShort: 'Beranda',
-    skip: 'Lompat ke isi',
-    empty: 'Belum ada kabar yang dipublikasikan.',
-    ctaTitle: 'Ingin bekerja sama dengan kami?',
-    ctaBody: 'Kami menyuplai tepung agar-agar curah 25 kg dan kemasan sachet untuk pabrik dessert, katering, dan UMKM makanan.',
-    ctaButton: 'Lihat produk kami',
+    carousel: {
+      region: 'Galeri foto kegiatan',
+      previous: 'Foto sebelumnya',
+      next: 'Foto berikutnya',
+      goTo: 'Lihat foto',
+    },
   },
 
   recipes: {

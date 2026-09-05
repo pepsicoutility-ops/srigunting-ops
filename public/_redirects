@@ -1,0 +1,5 @@
+# /news was briefly a separate page before the news moved onto the landing page
+# as the #news section. It was submitted to Search Console while it existed, so
+# it redirects instead of 404ing.
+/news      /#news  301
+/news.html /#news  301

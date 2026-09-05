@@ -207,14 +207,13 @@ export default {
     eyebrow: 'News',
     title: 'From the field',
     lead: 'What PT Sri Gunting Pratama has been doing with customers, partners and the community around the plant.',
-    galleryLabel: 'Event gallery',
     archiveTitle: 'Earlier posts',
-    backShort: 'Home',
-    skip: 'Skip to content',
-    empty: 'No posts published yet.',
-    ctaTitle: 'Want to work with us?',
-    ctaBody: 'We supply 25 kg bulk agar-agar powder and sachet packs to dessert manufacturers, caterers and food SMEs.',
-    ctaButton: 'See our products',
+    carousel: {
+      region: 'Event photo gallery',
+      previous: 'Previous photo',
+      next: 'Next photo',
+      goTo: 'Go to photo',
+    },
   },
 
   recipes: {

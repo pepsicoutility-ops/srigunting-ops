@@ -1,5 +1,5 @@
 /**
- * Bakes the Indonesian markup into every built page after `vite build`.
+ * Bakes the Indonesian markup into each built page after `vite build`.
  *
  * Why: the page is client-rendered, and a crawler that arrives with an `en-*`
  * Accept-Language header (Googlebot does) runs the app and gets the English
@@ -57,10 +57,7 @@ function stripEntranceStyles(html) {
 const LANG_GUARD = `<script>(function(){try{var s=localStorage.getItem('sgp-lang');var l=s==='id'||s==='en'?s:((navigator.language||'').toLowerCase().indexOf('id')===0?'id':'en');if(l!=='id'){var r=document.getElementById('root');if(r)r.textContent='';}}catch(e){}})();</script>`
 
 /** Each static page: its SSR bundle and the HTML file to inject into. */
-const PAGES = [
-  { name: 'index.html', ssr: 'dist-ssr/home/entry-server.js', html: 'dist/index.html' },
-  { name: 'news.html', ssr: 'dist-ssr/news/news-entry-server.js', html: 'dist/news.html' },
-]
+const PAGES = [{ name: 'index.html', ssr: 'dist-ssr/home/entry-server.js', html: 'dist/index.html' }]
 
 const ROOT_DIV = '<div id="root"></div>'
 

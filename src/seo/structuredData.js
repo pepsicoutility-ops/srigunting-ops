@@ -135,45 +135,11 @@ function recipes() {
   }))
 }
 
-export function buildStructuredData() {
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [organization(), website(), webPage(), faqPage(), ...recipes()],
-  }
-}
-
-/* ---------------------------------------------------------------- /news -- */
-
-const NEWS_URL = `${SITE}/news`
-
-function newsPage() {
-  return {
-    '@type': 'CollectionPage',
-    '@id': `${NEWS_URL}#webpage`,
-    url: NEWS_URL,
-    name: `${id.news.title} — ${COMPANY.legalName}`,
-    description: id.news.lead,
-    isPartOf: { '@id': `${SITE}/#website` },
-    about: { '@id': `${SITE}/#organization` },
-    inLanguage: 'id',
-  }
-}
-
-function breadcrumb() {
-  return {
-    '@type': 'BreadcrumbList',
-    '@id': `${NEWS_URL}#breadcrumb`,
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Beranda', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: id.news.eyebrow, item: NEWS_URL },
-    ],
-  }
-}
-
+/** One NewsArticle per post in data/news.js, all on the landing page. */
 function newsArticles() {
   return NEWS_SORTED.map((post) => ({
     '@type': 'NewsArticle',
-    '@id': `${NEWS_URL}#${post.slug}`,
+    '@id': `${SITE}/#news-${post.slug}`,
     headline: post.title.id,
     description: post.excerpt.id,
     image: `${SITE}${post.cover.src}`,
@@ -181,16 +147,16 @@ function newsArticles() {
     dateModified: post.date,
     author: { '@id': `${SITE}/#organization` },
     publisher: { '@id': `${SITE}/#organization` },
-    mainEntityOfPage: { '@id': `${NEWS_URL}#webpage` },
+    mainEntityOfPage: { '@id': `${SITE}/#webpage` },
     articleSection: id.news.eyebrow,
     inLanguage: 'id',
     ...(post.location ? { contentLocation: { '@type': 'Place', name: post.location } } : {}),
   }))
 }
 
-export function buildNewsStructuredData() {
+export function buildStructuredData() {
   return {
     '@context': 'https://schema.org',
-    '@graph': [organization(), website(), newsPage(), breadcrumb(), ...newsArticles()],
+    '@graph': [organization(), website(), webPage(), faqPage(), ...recipes(), ...newsArticles()],
   }
 }
