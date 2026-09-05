@@ -14,6 +14,7 @@ export default {
     quality: 'Mutu & Kapabilitas',
     facility: 'Fasilitas',
     recipes: 'Resep',
+    news: 'Berita',
     faq: 'F.A.Q',
     downloads: 'Unduhan',
     contact: 'Kontak',
@@ -198,6 +199,20 @@ export default {
       'Permen gummy kenyal berbahan agar-agar',
       'Cawan petri berisi media agar untuk keperluan laboratorium',
     ],
+  },
+
+  news: {
+    eyebrow: 'Berita',
+    title: 'Kabar dari lapangan',
+    lead: 'Catatan kegiatan PT Sri Gunting Pratama bersama pelanggan, mitra, dan warga di sekitar pabrik.',
+    galleryLabel: 'Galeri kegiatan',
+    archiveTitle: 'Kabar sebelumnya',
+    backShort: 'Beranda',
+    skip: 'Lompat ke isi',
+    empty: 'Belum ada kabar yang dipublikasikan.',
+    ctaTitle: 'Ingin bekerja sama dengan kami?',
+    ctaBody: 'Kami menyuplai tepung agar-agar curah 25 kg dan kemasan sachet untuk pabrik dessert, katering, dan UMKM makanan.',
+    ctaButton: 'Lihat produk kami',
   },
 
   recipes: {

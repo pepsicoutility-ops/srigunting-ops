@@ -30,7 +30,8 @@ export default function Navbar() {
       },
       { rootMargin: '-30% 0px -60% 0px', threshold: 0 },
     )
-    LINKS.forEach(({ id }) => {
+    LINKS.forEach(({ id, href }) => {
+      if (href) return // a real page, not a section on this one
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
@@ -81,10 +82,10 @@ export default function Navbar() {
           </a>
 
           <ul className="hidden items-center gap-1 xl:flex">
-            {LINKS.map(({ id, key }) => (
+            {LINKS.map(({ id, key, href }) => (
               <li key={id}>
                 <a
-                  href={`#${id}`}
+                  href={href ?? `#${id}`}
                   className={`relative rounded-full px-3.5 py-2 text-[13px] font-medium transition-colors duration-300 ${
                     active === id ? 'text-white' : 'text-white/65 hover:text-white'
                   }`}
@@ -164,7 +165,7 @@ export default function Navbar() {
           >
             <div className="container-x flex h-full flex-col justify-center pb-16 pt-[var(--header-h)]">
               <ul className="space-y-1">
-                {LINKS.map(({ id, key }, i) => (
+                {LINKS.map(({ id, key, href }, i) => (
                   <motion.li
                     key={id}
                     initial={{ opacity: 0, x: -24 }}
@@ -172,7 +173,7 @@ export default function Navbar() {
                     transition={{ delay: 0.06 * i + 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <a
-                      href={`#${id}`}
+                      href={href ?? `#${id}`}
                       onClick={() => setOpen(false)}
                       className="flex items-baseline gap-4 border-b border-white/10 py-4 font-display text-3xl font-light text-white transition-colors hover:text-emerald-400 sm:text-4xl"
                     >

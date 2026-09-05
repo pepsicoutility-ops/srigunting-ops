@@ -6,7 +6,7 @@
   "description": "Company profile landing page for PT Sri Gunting Pratama",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr/home && vite build --ssr src/news-entry-server.jsx --outDir dist-ssr/news && node scripts/prerender.mjs",
     "preview": "vite preview",
     "build:client": "vite build"
   },

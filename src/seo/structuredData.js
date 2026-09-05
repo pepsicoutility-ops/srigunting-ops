@@ -11,6 +11,7 @@
  * happens to render in.
  */
 import { COMPANY, SOCIALS } from '../data/company.js'
+import { NEWS_SORTED } from '../data/news.js'
 import id from '../i18n/id.js'
 
 const SITE = COMPANY.url
@@ -138,5 +139,58 @@ export function buildStructuredData() {
   return {
     '@context': 'https://schema.org',
     '@graph': [organization(), website(), webPage(), faqPage(), ...recipes()],
+  }
+}
+
+/* ---------------------------------------------------------------- /news -- */
+
+const NEWS_URL = `${SITE}/news`
+
+function newsPage() {
+  return {
+    '@type': 'CollectionPage',
+    '@id': `${NEWS_URL}#webpage`,
+    url: NEWS_URL,
+    name: `${id.news.title} — ${COMPANY.legalName}`,
+    description: id.news.lead,
+    isPartOf: { '@id': `${SITE}/#website` },
+    about: { '@id': `${SITE}/#organization` },
+    inLanguage: 'id',
+  }
+}
+
+function breadcrumb() {
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${NEWS_URL}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Beranda', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: id.news.eyebrow, item: NEWS_URL },
+    ],
+  }
+}
+
+function newsArticles() {
+  return NEWS_SORTED.map((post) => ({
+    '@type': 'NewsArticle',
+    '@id': `${NEWS_URL}#${post.slug}`,
+    headline: post.title.id,
+    description: post.excerpt.id,
+    image: `${SITE}${post.cover.src}`,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { '@id': `${SITE}/#organization` },
+    publisher: { '@id': `${SITE}/#organization` },
+    mainEntityOfPage: { '@id': `${NEWS_URL}#webpage` },
+    articleSection: id.news.eyebrow,
+    inLanguage: 'id',
+    ...(post.location ? { contentLocation: { '@type': 'Place', name: post.location } } : {}),
+  }))
+}
+
+export function buildNewsStructuredData() {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [organization(), website(), newsPage(), breadcrumb(), ...newsArticles()],
   }
 }

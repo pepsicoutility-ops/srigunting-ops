@@ -15,6 +15,7 @@ export default {
     quality: 'Quality & Capability',
     facility: 'Facility',
     recipes: 'Recipes',
+    news: 'News',
     faq: 'F.A.Q',
     downloads: 'Downloads',
     contact: 'Contact',
@@ -200,6 +201,20 @@ export default {
       'Chewy gummy sweets made with agar-agar',
       'Petri dish of agar growth medium for laboratory use',
     ],
+  },
+
+  news: {
+    eyebrow: 'News',
+    title: 'From the field',
+    lead: 'What PT Sri Gunting Pratama has been doing with customers, partners and the community around the plant.',
+    galleryLabel: 'Event gallery',
+    archiveTitle: 'Earlier posts',
+    backShort: 'Home',
+    skip: 'Skip to content',
+    empty: 'No posts published yet.',
+    ctaTitle: 'Want to work with us?',
+    ctaBody: 'We supply 25 kg bulk agar-agar powder and sachet packs to dessert manufacturers, caterers and food SMEs.',
+    ctaButton: 'See our products',
   },
 
   recipes: {

@@ -1,5 +1,5 @@
 /**
- * Bakes the Indonesian markup into dist/index.html after `vite build`.
+ * Bakes the Indonesian markup into every built page after `vite build`.
  *
  * Why: the page is client-rendered, and a crawler that arrives with an `en-*`
  * Accept-Language header (Googlebot does) runs the app and gets the English
@@ -17,7 +17,6 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const htmlPath = resolve(root, 'dist/index.html')
 
 /**
  * Drop the entrance states framer-motion emits for its `initial` prop.
@@ -57,20 +56,29 @@ function stripEntranceStyles(html) {
  */
 const LANG_GUARD = `<script>(function(){try{var s=localStorage.getItem('sgp-lang');var l=s==='id'||s==='en'?s:((navigator.language||'').toLowerCase().indexOf('id')===0?'id':'en');if(l!=='id'){var r=document.getElementById('root');if(r)r.textContent='';}}catch(e){}})();</script>`
 
-// pathToFileURL: a bare absolute path is not a valid ESM specifier on Windows
-const { render } = await import(pathToFileURL(resolve(root, 'dist-ssr/entry-server.js')).href)
-
-const body = stripEntranceStyles(render())
-const html = readFileSync(htmlPath, 'utf8')
+/** Each static page: its SSR bundle and the HTML file to inject into. */
+const PAGES = [
+  { name: 'index.html', ssr: 'dist-ssr/home/entry-server.js', html: 'dist/index.html' },
+  { name: 'news.html', ssr: 'dist-ssr/news/news-entry-server.js', html: 'dist/news.html' },
+]
 
 const ROOT_DIV = '<div id="root"></div>'
-if (!html.includes(ROOT_DIV)) {
-  throw new Error(`prerender: could not find ${ROOT_DIV} in dist/index.html`)
+
+for (const page of PAGES) {
+  // pathToFileURL: a bare absolute path is not a valid ESM specifier on Windows
+  const { render } = await import(pathToFileURL(resolve(root, page.ssr)).href)
+  const body = stripEntranceStyles(render())
+
+  const htmlPath = resolve(root, page.html)
+  const html = readFileSync(htmlPath, 'utf8')
+  if (!html.includes(ROOT_DIV)) {
+    throw new Error(`prerender: could not find ${ROOT_DIV} in ${page.html}`)
+  }
+
+  writeFileSync(htmlPath, html.replace(ROOT_DIV, `<div id="root">${body}</div>${LANG_GUARD}`), 'utf8')
+
+  const hidden = (body.match(/opacity:\s*0[;"]/g) || []).length
+  if (hidden > 0) throw new Error(`prerender: ${hidden} elements still ship as opacity:0 in ${page.name}`)
+
+  console.log(`prerendered ${(body.length / 1024).toFixed(0)} kB of Indonesian markup into ${page.html}`)
 }
-
-writeFileSync(htmlPath, html.replace(ROOT_DIV, `<div id="root">${body}</div>${LANG_GUARD}`), 'utf8')
-
-const hidden = (body.match(/opacity:\s*0[;"]/g) || []).length
-if (hidden > 0) throw new Error(`prerender: ${hidden} elements still ship as opacity:0`)
-
-console.log(`prerendered ${(body.length / 1024).toFixed(0)} kB of Indonesian markup into dist/index.html`)

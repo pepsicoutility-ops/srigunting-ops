@@ -138,10 +138,10 @@ invented here.
 | Where | What |
 |---|---|
 | `index.html` | Title/description, canonical, robots, Open Graph + Twitter cards, `geo.*`, hero preload |
-| `src/seo/structuredData.js` | `Organization`/`LocalBusiness`, `WebSite`, `WebPage`, `FAQPage` and one `Recipe` per card |
+| `src/seo/structuredData.js` | Landing page: `Organization`/`LocalBusiness`, `WebSite`, `WebPage`, `FAQPage`, one `Recipe` per card. `/news`: `CollectionPage`, `BreadcrumbList`, one `NewsArticle` per post |
 | `vite.config.js` | `structured-data` plugin inlines that graph into `dist/index.html` |
 | `public/robots.txt` | Allows everything, points at the sitemap |
-| `public/sitemap.xml` | Home page (with `image:image` entries) plus the two public PDFs |
+| `vite.config.js` | `sitemap` plugin emits `sitemap.xml` from `company.js` + `news.js` |
 | `public/assets/brand/og-cover.jpg` | 1200x630 share card |
 
 The graph is derived from `data/company.js` and `i18n/id.js`, so editing the
@@ -155,9 +155,10 @@ entity rather than helping it.
 
 ### Prerendering
 
-`npm run build` is three steps: the client bundle, an SSR bundle from
-`src/entry-server.jsx`, then `scripts/prerender.mjs`, which renders the app to
-static markup and writes it into `dist/index.html`.
+`npm run build` runs the client bundle, one SSR bundle per page, then
+`scripts/prerender.mjs`, which renders each page to static markup and writes it
+into its `dist/*.html`. Add a page by adding it to `PAGES` in that script and to
+`build.rollupOptions.input` in `vite.config.js`.
 
 It exists because the page is client-rendered and a crawler arriving with an
 `en-*` Accept-Language header — Googlebot does — would run the app and get the
@@ -184,6 +185,32 @@ contract to keep in sync. Three details make it work:
 Cost: `index.html` goes from ~4 kB to ~15 kB brotli. Verify after changing any
 of this by loading the built site with JavaScript disabled — you should get the
 full Indonesian page.
+
+## The News page
+
+`/news` is a second static page, not a client route: `news.html` is a Vite
+entry alongside `index.html`, so it keeps its own `<head>`, its own prerender
+and its own schema.org graph. Cloudflare's asset handling serves `/news` from
+`news.html`, so there is no router or SPA fallback to configure.
+
+**To change what it shows, edit `src/data/news.js` — that is the only file.**
+Copy the existing entry, give it a new `slug` and `date`, drop the photos into
+`public/assets/news/<slug>/` and point at them. The page renders the newest
+post in full and everything older as cards; the sitemap entry, its `lastmod`,
+the image list and the `NewsArticle` markup all follow from the same data.
+
+Both languages live in that file rather than in `i18n/id.js` + `i18n/en.js`. A
+post is one piece of content, so adding one should mean editing one file
+instead of keeping two arrays aligned by index. The page's own chrome — labels,
+buttons, the heading — still comes from the dictionaries under `news.*`.
+
+Photos are cropped to 4:5 (gallery) and 16:9 (cover) so the grid stays flush at
+every breakpoint, the same rule the recipe gallery follows.
+
+`NAV_LINKS` entries carry an optional `href`. With it, the Navbar and Footer
+render a real page link and the scroll-spy skips the entry; without it they
+build an on-page anchor as before. `Footer` also takes a `base` prop, set to
+`/` on sub-pages so `#about` resolves back to the landing page.
 
 ### Submitting the sitemap
 

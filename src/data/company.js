@@ -92,4 +92,7 @@ export const NAV_LINKS = [
   // here, in the same position, when the section comes back.
   { id: 'faq', key: 'nav.faq' },
   { id: 'downloads', key: 'nav.downloads' },
+  // `href` marks a real page rather than an on-page anchor; the Navbar and
+  // Footer render it as-is and the scroll-spy skips it.
+  { id: 'news', key: 'nav.news', href: '/news' },
 ]
