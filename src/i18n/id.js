@@ -1,8 +1,11 @@
 /**
  * Salinan Bahasa Indonesia.
  *
- * Mengikuti sriguntingpratama.com. Visi, misi, dan deskripsi produk
- * diterjemahkan dari teks resmi perusahaan, bukan ditulis ulang bebas.
+ * Profil perusahaan (hero, tentang kami, visi, misi, komitmen, mutu, pasar,
+ * kontak) disalin apa adanya dari naskah company profile yang diberikan
+ * perusahaan pada September 2026 — termasuk judul dan tagline yang sengaja
+ * ditulis dalam bahasa Inggris. Produk, spesifikasi, dan FAQ mengikuti
+ * sriguntingpratama.com.
  */
 export default {
   meta: { label: 'Bahasa Indonesia', short: 'ID', htmlLang: 'id' },
@@ -11,7 +14,7 @@ export default {
     home: 'Beranda',
     about: 'Tentang Kami',
     products: 'Produk',
-    quality: 'Mutu & Kapabilitas',
+    quality: 'Mutu',
     facility: 'Fasilitas',
     recipes: 'Resep',
     news: 'Berita',
@@ -25,67 +28,92 @@ export default {
 
   hero: {
     eyebrow: 'PT. Sri Gunting Pratama',
-    titleA: 'Produsen Tepung Agar-Agar',
-    titleB: 'dan Ekstrak Rumput Laut',
-    titleC: 'Berorientasi Industri & Ekspor',
-    lead: 'Kami memproduksi tepung agar-agar dari rumput laut pilihan dengan standar mutu tinggi, performa yang konsisten, dan kesiapan untuk pasar industri maupun ekspor.',
+    titleA: 'Indonesian',
+    titleB: 'Agar-Agar Manufacturer',
+    titleC: 'Since 1995',
+    lead: 'From Indonesia’s Natural Sea Resources to Quality Agar-Agar for the World.',
     primary: 'Lihat Produk Kami',
     secondary: 'Unduh Profil Perusahaan',
     scroll: 'Gulir untuk menjelajah',
     imageAlt: 'Sak tepung agar-agar curah 25 kg produksi PT. Sri Gunting Pratama',
     stats: [
+      { value: 30, suffix: '+', label: 'Tahun pengalaman' },
       { value: 1200, prefix: 'hingga ', suffix: ' g/cm²', label: 'Kekuatan gel grade Super' },
       { value: 3, suffix: ' Grade', label: 'Super · Premium · Standard' },
       { value: 25, suffix: ' kg', label: 'Kemasan sak curah' },
-      { value: 2, suffix: ' Lini', label: 'Tepung agar-agar & jeli' },
     ],
   },
 
   trust: {
-    label: 'Mutu yang dapat diverifikasi',
+    label: 'Agar-Agar Manufacturer | Indonesia — Established 1995',
     items: [
+      'Established Since 1995',
+      'Indonesian Raw Material',
+      'Consistent Quality',
+      'Customer Oriented',
+      'Flexible & Reliable',
+      'Long-Term Partnership',
       'Terdaftar BPOM RI',
       'Bersertifikat Halal Indonesia',
-      'Rumput Laut Gracilaria Pilihan',
-      'Kemasan Food-Grade',
-      'Kekuatan Gel Diuji Tiap Batch',
-      'Kemitraan dengan Petani Lokal',
-      'Siap Ekspor',
-      'Kapasitas Produksi Fleksibel',
     ],
   },
 
   about: {
     eyebrow: 'Tentang Kami',
-    title: 'Produsen agar-agar berorientasi industri & ekspor',
+    title: 'Quality from Nature. Consistency from Experience.',
     body: [
-      'PT Sri Gunting Pratama adalah produsen tepung agar-agar dan ekstrak rumput laut yang berorientasi pada pasar industri dan ekspor. Kami berfokus pada konsistensi mutu, kestabilan proses, dan pasokan bahan baku yang berkelanjutan melalui kemitraan dengan petani lokal.',
+      'PT. Sri Gunting Pratama adalah perusahaan manufaktur agar-agar asal Indonesia yang telah berdiri dan berkembang sejak 1995.',
+      'Selama lebih dari tiga dekade, kami membangun pengalaman dan keahlian dalam mengolah bahan baku rumput laut menjadi produk agar-agar yang berkualitas, konsisten, dan dapat memenuhi kebutuhan berbagai industri.',
+      'Berbasis di Indonesia, salah satu negara penghasil rumput laut terbesar di dunia, kami memiliki akses terhadap sumber daya alam yang menjadi fondasi utama produk kami.',
+      'Dengan perpaduan pengalaman, kualitas bahan baku, proses produksi yang terkontrol, dan komitmen terhadap kepuasan pelanggan, PT. Sri Gunting Pratama terus berkembang sebagai mitra terpercaya bagi pelanggan di Indonesia maupun pasar internasional.',
     ],
     locationLabel: 'Randu Agung · Singosari',
     locationValue: 'Malang 65153, Jawa Timur — Indonesia',
-    highlights: [
-      { title: 'Konsistensi Mutu', body: 'Kekuatan gel, kadar air, dan stabilitas diuji pada setiap batch produksi.' },
-      { title: 'Kestabilan Proses', body: 'Proses produksi terkendali sehingga hasilnya seragam dari batch ke batch.' },
-      { title: 'Pasokan Berkelanjutan', body: 'Bahan baku terjamin lewat kemitraan jangka panjang dengan petani rumput laut lokal.' },
-    ],
+    story: {
+      eyebrow: 'Our Story',
+      title: 'More Than 30 Years of Experience',
+      body: [
+        'Sejak tahun 1995, PT. Sri Gunting Pratama telah melewati berbagai perkembangan industri dan perubahan kebutuhan pasar.',
+        'Pengalaman panjang tersebut menjadi aset penting bagi kami dalam memahami karakteristik bahan baku, proses pengolahan, kebutuhan aplikasi, hingga tuntutan kualitas pelanggan.',
+      ],
+      quote: [
+        'Bagi kami, pengalaman bukan sekadar angka.',
+        'Pengalaman adalah kemampuan untuk menjaga kualitas tetap konsisten dari waktu ke waktu.',
+      ],
+      closing:
+        'Kami percaya bahwa hubungan bisnis yang baik dibangun bukan hanya melalui produk yang berkualitas, tetapi juga melalui kepercayaan, konsistensi, komunikasi, dan komitmen jangka panjang.',
+    },
   },
 
   visionMission: {
-    eyebrow: 'Visi & Misi',
-    visionTitle: 'Visi Perusahaan',
-    vision: 'Menjadi perusahaan yang terpercaya, dikenal luas, dan eksis di pasar global',
-    missionTitle: 'Misi Perusahaan',
+    commitmentTitle: 'Our Commitment',
+    commitment: [
+      { title: 'Quality', body: 'Menjaga kualitas produk secara konsisten.' },
+      { title: 'Reliability', body: 'Menjadi supplier yang dapat diandalkan.' },
+      { title: 'Integrity', body: 'Membangun bisnis berdasarkan kejujuran dan kepercayaan.' },
+      { title: 'Continuous Improvement', body: 'Terus meningkatkan proses, produk, dan pelayanan.' },
+      { title: 'Partnership', body: 'Membangun hubungan bisnis jangka panjang dengan pelanggan.' },
+    ],
+    visionTitle: 'Our Vision',
+    vision:
+      'To become a trusted Indonesian agar-agar manufacturer recognized for quality, consistency and long-term partnership.',
+    // The profile states the vision in both languages; the Indonesian page
+    // shows both, the English page only the statement above.
+    visionTranslation:
+      'Menjadi perusahaan agar-agar Indonesia yang dipercaya karena kualitas, konsistensi, dan komitmen terhadap hubungan jangka panjang.',
+    missionTitle: 'Our Mission',
     mission: [
-      'Menjalankan perdagangan dari hulu ke hilir secara komersial dan terukur, khususnya dalam penyediaan tepung agar-agar.',
-      'Melaksanakan transaksi perdagangan ke seluruh pasar global.',
-      'Menghasilkan produk bermutu baik yang mampu mencapai Standar Internasional.',
-      'Membantu petani rumput laut lokal dalam upaya meningkatkan kesejahteraan.',
-      'Meningkatkan produktivitas melalui terpenuhinya kesejahteraan karyawan.',
+      'Menghasilkan produk agar-agar dengan kualitas yang konsisten.',
+      'Mengoptimalkan potensi bahan baku rumput laut Indonesia.',
+      'Memberikan pelayanan yang profesional dan responsif.',
+      'Memenuhi kebutuhan pelanggan domestik dan internasional.',
+      'Membangun hubungan bisnis jangka panjang yang saling menguntungkan.',
+      'Melakukan pengembangan dan peningkatan proses secara berkelanjutan.',
     ],
   },
 
   products: {
-    eyebrow: 'Produk Kami',
+    eyebrow: 'Katalog Produk',
     title: 'Tepung agar-agar dan tepung jeli',
     lead: 'Dari sachet sekali pakai hingga sak industri 25 kg — satu lini produksi, dikemas untuk setiap pasar.',
     filters: { all: 'Semua', agar: 'Tepung agar-agar', jelly: 'Tepung Jeli' },
@@ -166,33 +194,88 @@ export default {
     ],
   },
 
-  quality: {
-    eyebrow: 'Mutu & Kapabilitas',
-    title: 'Teruji, konsisten, dan siap ditingkatkan',
-    lead: 'Setiap batch produksi melalui pengujian mutu internal sebelum dilepas ke pelanggan.',
+  why: {
+    title: 'Why Sri Gunting Pratama?',
     items: [
-      { title: 'Pengujian Mutu Internal', body: 'Pengujian kekuatan gel, kadar air, dan stabilitas.' },
-      { title: 'Konsistensi Batch', body: 'Proses produksi terkendali memastikan hasil yang seragam.' },
-      { title: 'Produksi Terukur', body: 'Kapasitas fleksibel untuk kemitraan pasokan jangka panjang.' },
+      {
+        title: 'Established Since 1995',
+        body: 'Lebih dari 30 tahun pengalaman memberikan kami pemahaman mendalam mengenai industri agar-agar dan pengolahan rumput laut.',
+      },
+      {
+        title: 'Indonesian Raw Material',
+        body: 'Kami memanfaatkan potensi rumput laut Indonesia sebagai salah satu sumber bahan baku utama produk kami.',
+      },
+      {
+        title: 'Consistent Quality',
+        body: 'Konsistensi adalah salah satu prioritas utama kami. Kami menjaga proses produksi dan pengendalian kualitas agar produk yang diterima pelanggan memiliki standar yang konsisten.',
+      },
+      {
+        title: 'Customer Oriented',
+        body: 'Kami tidak hanya menjual produk. Kami membangun hubungan jangka panjang dengan pelanggan dengan memahami kebutuhan dan aplikasi mereka.',
+      },
+      {
+        title: 'Flexible & Reliable',
+        body: 'Kami terbuka terhadap kebutuhan spesifik pelanggan, baik untuk pasar domestik maupun internasional.',
+      },
+      {
+        title: 'Long-Term Partnership',
+        body: 'Tujuan kami bukan sekadar mendapatkan satu transaksi. Kami ingin menjadi supplier yang dapat diandalkan untuk kebutuhan pelanggan dalam jangka panjang.',
+      },
     ],
-    statementTitle: 'Pernyataan kepatuhan',
-    statement:
-      'Produk diproses menggunakan bahan baku rumput laut yang aman pangan dan ditangani sesuai praktik produksi yang baik.',
-    packagingTitle: 'Kemasan & pasokan',
-    packagingBody:
-      'Produk dikemas dalam kemasan food-grade dengan standar berat industri dan siap pengiriman domestik maupun ekspor. Kapasitas produksi disesuaikan untuk kebutuhan kontrak jangka panjang.',
+  },
+
+  quality: {
+    title: 'Quality Comes First',
+    body: [
+      'Kami memahami bahwa bagi industri makanan, kualitas bahan baku merupakan bagian penting dari keberhasilan produk akhir.',
+      'Karena itu, kami memberikan perhatian terhadap setiap tahapan proses, mulai dari pemilihan dan penanganan bahan baku hingga proses produksi dan pengemasan.',
+    ],
+    promiseLabel: 'Our commitment is simple:',
+    promise: 'The quality we promise today must be the quality our customers receive tomorrow.',
+    closing:
+      'Kami terus berupaya meningkatkan proses produksi, sistem pengendalian kualitas, dan pelayanan untuk memenuhi ekspektasi pelanggan yang terus berkembang.',
+  },
+
+  market: {
+    eyebrow: 'For Domestic & International Market',
+    title: 'Indonesia to the World',
+    body: [
+      'Indonesia memiliki kekayaan sumber daya laut yang luar biasa.',
+      'PT. Sri Gunting Pratama ingin membawa salah satu potensi tersebut ke pasar yang lebih luas.',
+      'Dengan pengalaman sejak 1995, kami siap menjadi mitra bagi perusahaan lokal maupun buyer internasional yang membutuhkan agar-agar berkualitas dari Indonesia.',
+    ],
+    partnersLabel: 'Kami terbuka untuk bekerja sama dengan:',
+    partners: [
+      'Importers',
+      'Distributors',
+      'Food Manufacturers',
+      'Traders',
+      'Wholesalers',
+      'Food Service Companies',
+      'Private Label Partners',
+    ],
+    closing:
+      'Baik untuk kebutuhan pasar Indonesia maupun ekspor, kami siap mendiskusikan kebutuhan produk, spesifikasi, kemasan, dan volume yang diperlukan.',
   },
 
   applications: {
-    eyebrow: 'Aplikasi',
-    title: 'Di mana agar-agar digunakan',
-    lead: 'Alternatif nabati pengganti gelatin, dipakai pada dessert, minuman, confectionery, hingga aplikasi teknis.',
+    eyebrow: 'Our Product',
+    title: 'Agar-Agar',
+    lead: 'Agar-agar merupakan bahan hidrokoloid alami yang banyak digunakan dalam berbagai aplikasi pangan.',
+    intro:
+      'Produk agar-agar kami dapat digunakan sebagai bahan baku maupun ingredient untuk berbagai kebutuhan industri, antara lain:',
     items: [
-      { title: 'Puding & Dessert', body: 'Puding, mousse, dan jeli — agar-agar membentuk gel lebih kokoh daripada gelatin dan tetap stabil pada suhu lebih tinggi.' },
-      { title: 'Minuman', body: 'Cincau, jelly drink, dan campuran milk tea yang harus mempertahankan bentuknya di dalam cairan.' },
-      { title: 'Confectionery', body: 'Permen gummy, es krim, dan cheesecake, sebagai bahan pembentuk gel yang sepenuhnya nabati.' },
-      { title: 'Teknis & Ilmiah', body: 'Bahan pengisi pada pelapisan kertas dan kain, penjernih pada industri fermentasi, serta keperluan ilmiah tertentu.' },
+      'Food & Beverage',
+      'Jelly & Dessert',
+      'Confectionery',
+      'Bakery',
+      'Dairy Products',
+      'Sauce & Food Processing',
+      'Catering & Food Service',
+      'Pharmaceutical & Other Applications',
     ],
+    closing:
+      'Kami memahami bahwa setiap industri memiliki kebutuhan yang berbeda. Karena itu, kami berkomitmen menyediakan produk dengan karakteristik yang dapat disesuaikan dengan kebutuhan aplikasi pelanggan.',
     alts: [
       'Puding agar-agar cetak disajikan di atas piring',
       'Minuman jelly drink dengan potongan agar-agar',
@@ -428,10 +511,17 @@ export default {
     },
   },
 
+  partnership: {
+    eyebrow: 'Looking for a Reliable Agar-Agar Supplier?',
+    title: 'Let’s Grow Together.',
+    body: 'Jika Anda sedang mencari supplier agar-agar dari Indonesia untuk kebutuhan industri, distribusi, perdagangan, maupun ekspor, PT. Sri Gunting Pratama siap menjadi partner Anda.',
+    credo: ['More than 30 years of experience.', 'One commitment to quality.', 'One goal: long-term partnership.'],
+  },
+
   contact: {
-    eyebrow: 'Hubungi Kami',
-    title: 'Terbuka untuk permintaan bisnis & kerja sama ekspor',
-    lead: 'Sampaikan grade, kemasan, dan jumlah yang Anda butuhkan. Kami akan membalas dengan lembar spesifikasi dan estimasi lead time.',
+    eyebrow: 'Contact Us',
+    title: 'PT. Sri Gunting Pratama',
+    lead: 'For inquiries, samples, product specifications and business cooperation, please contact our team.',
     form: {
       name: 'Nama Anda',
       email: 'Email Anda',
@@ -446,12 +536,17 @@ export default {
       whatsapp: 'Chat via WhatsApp',
       back: 'Kirim pesan lagi',
     },
-    info: { locationLabel: 'Lokasi', emailLabel: 'Email', phoneLabel: 'Telepon' },
+    info: {
+      locationLabel: 'Address',
+      emailLabel: 'Email',
+      phoneLabel: 'Phone / WhatsApp',
+      websiteLabel: 'Website',
+    },
   },
 
   footer: {
     tagline:
-      'Produsen tepung agar-agar dan ekstrak rumput laut berorientasi industri dan ekspor, berlokasi di Malang, Jawa Timur.',
+      'PT. Sri Gunting Pratama adalah perusahaan manufaktur agar-agar asal Indonesia yang telah berdiri dan berkembang sejak 1995.',
     usefulLinks: 'Tautan Berguna',
     services: 'Layanan Kami',
     servicesList: ['Tepung agar-agar', 'Tepung Jeli'],
@@ -460,5 +555,5 @@ export default {
     rights: 'Seluruh hak cipta dilindungi.',
   },
 
-  common: { langSwitch: 'Bahasa', backToTop: 'Kembali ke atas' },
+  common: { langSwitch: 'Bahasa', backToTop: 'Kembali ke atas', established: 'Established 1995' },
 }

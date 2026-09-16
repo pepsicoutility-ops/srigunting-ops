@@ -1,9 +1,11 @@
 /**
  * English copy.
  *
- * Wording follows sriguntingpratama.com. Where the company has an official
- * phrasing (vision, mission, product descriptions, FAQ) it is reproduced
- * verbatim rather than rewritten.
+ * The company profile (hero, about, vision, mission, commitment, quality,
+ * market, contact) follows the copy the company supplied in September 2026:
+ * lines it wrote in English are reproduced verbatim, and the Indonesian body
+ * text is translated. Products, specifications and the FAQ follow
+ * sriguntingpratama.com.
  */
 export default {
   meta: { label: 'English', short: 'EN', htmlLang: 'en' },
@@ -12,7 +14,7 @@ export default {
     home: 'Home',
     about: 'About Us',
     products: 'Products',
-    quality: 'Quality & Capability',
+    quality: 'Quality',
     facility: 'Facility',
     recipes: 'Recipes',
     news: 'News',
@@ -26,68 +28,90 @@ export default {
 
   hero: {
     eyebrow: 'PT. Sri Gunting Pratama',
-    titleA: 'Industrial & Export-Oriented',
-    titleB: 'Agar-Agar and Seaweed',
-    titleC: 'Extract Producer',
-    lead: 'We manufacture agar-agar powder from selected seaweed with high quality standards, consistent performance, and readiness for industrial and export markets.',
+    titleA: 'Indonesian',
+    titleB: 'Agar-Agar Manufacturer',
+    titleC: 'Since 1995',
+    lead: 'From Indonesia’s Natural Sea Resources to Quality Agar-Agar for the World.',
     primary: 'Our Products',
     secondary: 'Download Company Profile',
     scroll: 'Scroll to explore',
     imageAlt: '25 kg bulk sack of agar-agar powder produced by PT. Sri Gunting Pratama',
     stats: [
+      { value: 30, suffix: '+', label: 'Years of experience' },
       { value: 1200, prefix: 'up to ', suffix: ' g/cm²', label: 'Super grade gel strength' },
       { value: 3, suffix: ' Grades', label: 'Super · Premium · Standard' },
       { value: 25, suffix: ' kg', label: 'Bulk sack packing' },
-      { value: 2, suffix: ' Lines', label: 'Agar-agar & jelly powder' },
     ],
   },
 
   trust: {
-    label: 'Quality you can verify',
+    label: 'Agar-Agar Manufacturer | Indonesia — Established 1995',
     items: [
+      'Established Since 1995',
+      'Indonesian Raw Material',
+      'Consistent Quality',
+      'Customer Oriented',
+      'Flexible & Reliable',
+      'Long-Term Partnership',
       'BPOM RI Registered',
       'Halal Indonesia Certified',
-      'Selected Gracilaria Seaweed',
-      'Food-Grade Packaging',
-      'Gel Strength Tested Per Batch',
-      'Partnership With Local Farmers',
-      'Export Ready',
-      'Scalable Production Capacity',
     ],
   },
 
   about: {
     eyebrow: 'About Us',
-    title: 'Industrial & export-oriented agar-agar producer',
+    title: 'Quality from Nature. Consistency from Experience.',
     body: [
-      'PT Sri Gunting Pratama is an industrial and export-oriented manufacturer of agar-agar powder and seaweed extracts. We focus on quality consistency, process stability, and sustainable raw material supply through partnerships with local farmers.',
+      'PT. Sri Gunting Pratama is an Indonesian agar-agar manufacturer, established in 1995 and growing ever since.',
+      'For more than three decades, we have built the experience and expertise to process seaweed raw material into agar-agar products that are high in quality, consistent, and able to meet the needs of a wide range of industries.',
+      'Based in Indonesia, one of the largest seaweed-producing countries in the world, we have access to the natural resources that form the foundation of our products.',
+      'Through a combination of experience, quality raw materials, a controlled production process and a commitment to customer satisfaction, PT. Sri Gunting Pratama continues to grow as a trusted partner for customers in Indonesia and in international markets.',
     ],
     locationLabel: 'Randu Agung · Singosari',
     locationValue: 'Malang 65153, Jawa Timur — Indonesia',
-    highlights: [
-      { title: 'Quality Consistency', body: 'Gel strength, moisture content and stability are tested on every production batch.' },
-      { title: 'Process Stability', body: 'A controlled production process so results stay uniform from batch to batch.' },
-      { title: 'Sustainable Supply', body: 'Raw material secured through long-term partnerships with local seaweed farmers.' },
-    ],
+    story: {
+      eyebrow: 'Our Story',
+      title: 'More Than 30 Years of Experience',
+      body: [
+        'Since 1995, PT. Sri Gunting Pratama has lived through many developments in the industry and many changes in what the market needs.',
+        'That long experience is an important asset in understanding the characteristics of raw materials, processing, application requirements and the quality our customers demand.',
+      ],
+      quote: [
+        'For us, experience is more than a number.',
+        'Experience is the ability to keep quality consistent over time.',
+      ],
+      closing:
+        'We believe good business relationships are built not only on quality products, but also on trust, consistency, communication and long-term commitment.',
+    },
   },
 
   visionMission: {
-    eyebrow: 'Vision & Mission',
-    visionTitle: "Company's vision",
-    // Reproduced exactly as published by the company.
-    vision: 'Become a Trusted, Well known and Existed in the global market',
-    missionTitle: "Company's mission",
+    commitmentTitle: 'Our Commitment',
+    commitment: [
+      { title: 'Quality', body: 'Keeping product quality consistent.' },
+      { title: 'Reliability', body: 'Being a supplier you can depend on.' },
+      { title: 'Integrity', body: 'Building our business on honesty and trust.' },
+      { title: 'Continuous Improvement', body: 'Continuously improving our processes, products and service.' },
+      { title: 'Partnership', body: 'Building long-term business relationships with our customers.' },
+    ],
+    visionTitle: 'Our Vision',
+    vision:
+      'To become a trusted Indonesian agar-agar manufacturer recognized for quality, consistency and long-term partnership.',
+    // The Indonesian page adds its translation beneath; nothing to add here.
+    visionTranslation: null,
+    missionTitle: 'Our Mission',
     mission: [
-      'Trading from upstream to downstream is commercially and scalable, especially in providing Agar powder.',
-      'Carry out trade transactions throughout the global market.',
-      'Producing good quality products that could achieve International Standard',
-      'Assist local seaweed farmers in an effort to improve prosperity.',
-      'Improving productivity through employee well-being fulfilled.',
+      'Produce agar-agar products of consistent quality.',
+      'Make the most of the potential of Indonesian seaweed as a raw material.',
+      'Provide professional and responsive service.',
+      'Meet the needs of domestic and international customers.',
+      'Build long-term, mutually beneficial business relationships.',
+      'Develop and improve our processes continuously.',
     ],
   },
 
   products: {
-    eyebrow: 'Our Products',
+    eyebrow: 'Product Catalog',
     title: 'Agar-agar powder and jelly powder',
     lead: 'From single-use sachets to 25 kg industrial sacks — one production line, packed for every market.',
     filters: { all: 'All', agar: 'Agar-agar powder', jelly: 'Jelly Powder' },
@@ -168,33 +192,87 @@ export default {
     ],
   },
 
-  quality: {
-    eyebrow: 'Quality & Capability',
-    title: 'Tested, consistent, and ready to scale',
-    lead: 'Each production batch undergoes internal quality testing before it is released to a customer.',
+  why: {
+    title: 'Why Sri Gunting Pratama?',
     items: [
-      { title: 'Internal Quality Testing', body: 'Gel strength, moisture content, and stability testing.' },
-      { title: 'Batch Consistency', body: 'Controlled production process ensures uniform results.' },
-      { title: 'Scalable Production', body: 'Flexible capacity for long-term supply partnerships.' },
+      {
+        title: 'Established Since 1995',
+        body: 'More than 30 years of experience has given us a deep understanding of the agar-agar industry and of seaweed processing.',
+      },
+      {
+        title: 'Indonesian Raw Material',
+        body: 'We draw on the potential of Indonesian seaweed as one of the main sources of raw material for our products.',
+      },
+      {
+        title: 'Consistent Quality',
+        body: 'Consistency is one of our top priorities. We maintain our production process and quality control so that the products our customers receive meet a consistent standard.',
+      },
+      {
+        title: 'Customer Oriented',
+        body: 'We do not just sell products. We build long-term relationships with our customers by understanding their needs and their applications.',
+      },
+      {
+        title: 'Flexible & Reliable',
+        body: 'We are open to our customers’ specific requirements, for both domestic and international markets.',
+      },
+      {
+        title: 'Long-Term Partnership',
+        body: 'Our goal is not simply to close a single transaction. We want to be a supplier our customers can rely on for the long term.',
+      },
     ],
-    statementTitle: 'Compliance statement',
-    statement:
-      'Products are processed using food-safe seaweed raw materials and handled in accordance with good manufacturing practices.',
-    packagingTitle: 'Packaging & supply',
-    packagingBody:
-      'Products are packed in food-grade packaging with industrial standard weights and are ready for domestic and export shipment. Production capacity is scalable for long-term supply contracts.',
+  },
+
+  quality: {
+    title: 'Quality Comes First',
+    body: [
+      'We understand that for the food industry, the quality of raw materials is an important part of a successful end product.',
+      'That is why we pay attention to every stage of the process, from selecting and handling raw materials through to production and packaging.',
+    ],
+    promiseLabel: 'Our commitment is simple:',
+    promise: 'The quality we promise today must be the quality our customers receive tomorrow.',
+    closing:
+      'We keep improving our production processes, quality control system and service to meet our customers’ ever-evolving expectations.',
+  },
+
+  market: {
+    eyebrow: 'For Domestic & International Market',
+    title: 'Indonesia to the World',
+    body: [
+      'Indonesia is extraordinarily rich in marine resources.',
+      'PT. Sri Gunting Pratama wants to bring part of that potential to a wider market.',
+      'With experience going back to 1995, we are ready to partner with local companies and international buyers who need quality agar-agar from Indonesia.',
+    ],
+    partnersLabel: 'We are open to working with:',
+    partners: [
+      'Importers',
+      'Distributors',
+      'Food Manufacturers',
+      'Traders',
+      'Wholesalers',
+      'Food Service Companies',
+      'Private Label Partners',
+    ],
+    closing:
+      'Whether for the Indonesian market or for export, we are ready to discuss the products, specifications, packaging and volumes you need.',
   },
 
   applications: {
-    eyebrow: 'Applications',
-    title: 'Where agar-agar is used',
-    lead: 'A vegetarian alternative to gelatin, used across dessert, beverage, confectionery and technical applications.',
+    eyebrow: 'Our Product',
+    title: 'Agar-Agar',
+    lead: 'Agar-agar is a natural hydrocolloid widely used across food applications.',
+    intro: 'Our agar-agar can be used as a raw material or as an ingredient for a wide range of industries, including:',
     items: [
-      { title: 'Puddings & Desserts', body: 'Puddings, mousses and jellies — agar sets firmer than gelatin and holds its shape at higher temperatures.' },
-      { title: 'Beverage', body: 'Grass jelly, jelly drinks and milk tea inclusions that need to keep their shape in liquid.' },
-      { title: 'Confectionery', body: 'Gummy candies, ice cream and cheesecake, as a purely vegetarian setting agent.' },
-      { title: 'Technical & Scientific', body: 'A filler in sizing paper and fabric, a clarifying agent in brewing, and certain scientific purposes.' },
+      'Food & Beverage',
+      'Jelly & Dessert',
+      'Confectionery',
+      'Bakery',
+      'Dairy Products',
+      'Sauce & Food Processing',
+      'Catering & Food Service',
+      'Pharmaceutical & Other Applications',
     ],
+    closing:
+      'We understand that every industry has different needs. That is why we are committed to supplying products whose characteristics can be matched to each customer’s application.',
     alts: [
       'Moulded agar-agar pudding served on a plate',
       'Jelly drink with pieces of agar-agar suspended in it',
@@ -430,10 +508,17 @@ export default {
     },
   },
 
+  partnership: {
+    eyebrow: 'Looking for a Reliable Agar-Agar Supplier?',
+    title: 'Let’s Grow Together.',
+    body: 'If you are looking for an agar-agar supplier from Indonesia for manufacturing, distribution, trading or export, PT. Sri Gunting Pratama is ready to be your partner.',
+    credo: ['More than 30 years of experience.', 'One commitment to quality.', 'One goal: long-term partnership.'],
+  },
+
   contact: {
     eyebrow: 'Contact Us',
-    title: 'Business inquiries & export cooperation welcome',
-    lead: 'Tell us the grade, packaging and quantity you need. We will reply with a specification sheet and an indicative lead time.',
+    title: 'PT. Sri Gunting Pratama',
+    lead: 'For inquiries, samples, product specifications and business cooperation, please contact our team.',
     form: {
       name: 'Your Name',
       email: 'Your Email',
@@ -448,12 +533,17 @@ export default {
       whatsapp: 'Chat on WhatsApp',
       back: 'Send another message',
     },
-    info: { locationLabel: 'Location', emailLabel: 'Email', phoneLabel: 'Call' },
+    info: {
+      locationLabel: 'Address',
+      emailLabel: 'Email',
+      phoneLabel: 'Phone / WhatsApp',
+      websiteLabel: 'Website',
+    },
   },
 
   footer: {
     tagline:
-      'Industrial and export-oriented manufacturer of agar-agar powder and seaweed extracts, based in Malang, East Java.',
+      'PT. Sri Gunting Pratama is an Indonesian agar-agar manufacturer, established in 1995 and growing ever since.',
     usefulLinks: 'Useful Links',
     services: 'Our Services',
     servicesList: ['Agar-agar powder', 'Jelly Powder'],
@@ -462,5 +552,5 @@ export default {
     rights: 'All rights reserved.',
   },
 
-  common: { langSwitch: 'Language', backToTop: 'Back to top' },
+  common: { langSwitch: 'Language', backToTop: 'Back to top', established: 'Established 1995' },
 }

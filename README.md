@@ -1,7 +1,7 @@
 # PT Sri Gunting Pratama — Company Profile
 
-Landing page for PT Sri Gunting Pratama, an industrial and export-oriented
-manufacturer of agar-agar powder and seaweed extracts in Malang, East Java.
+Landing page for PT Sri Gunting Pratama, an Indonesian agar-agar manufacturer
+established in 1995, based in Malang, East Java.
 
 Built with **React 18 + Vite + Tailwind CSS + Framer Motion**, fully bilingual
 (English / Bahasa Indonesia) and responsive from 360 px up.
@@ -35,15 +35,18 @@ src/
 │  ├─ LanguageToggle.jsx    # animated EN / ID pill
 │  └─ BackToTop.jsx
 └─ sections/                # one file per section
-   ├─ Navbar.jsx            ├─ Quality.jsx
-   ├─ Hero.jsx              ├─ Applications.jsx
+   ├─ Navbar.jsx            ├─ Quality.jsx       # "Quality Comes First"
+   ├─ Hero.jsx              ├─ Market.jsx        # "Indonesia to the World"
    ├─ TrustBar.jsx          ├─ Recipes.jsx
-   │                        ├─ News.jsx
-   ├─ About.jsx             ├─ Facility.jsx
-   ├─ VisionMission.jsx     ├─ Faq.jsx
-   ├─ Products.jsx          ├─ Downloads.jsx
-   ├─ Specifications.jsx    ├─ Contact.jsx
-   └─ seo/                  └─ Footer.jsx
+   ├─ About.jsx  # + story  ├─ News.jsx
+   ├─ VisionMission.jsx     ├─ Facility.jsx      # currently off the page
+   │  # + commitment        ├─ Faq.jsx
+   ├─ Applications.jsx      ├─ Downloads.jsx
+   │  # "Our Product"       ├─ Partnership.jsx   # "Let's Grow Together"
+   ├─ Products.jsx          ├─ Contact.jsx
+   ├─ Specifications.jsx    └─ Footer.jsx
+   ├─ WhyUs.jsx
+   └─ seo/
       └─ structuredData.js  # schema.org graph, inlined at build time
 ```
 
@@ -99,10 +102,23 @@ ever triggering.
 ## Content sourcing
 
 Every user-facing string traces back to material the company itself
-published: sriguntingpratama.com, its product detail pages, and the Export
-Technical Company Profile / QC Datasheet PDFs. The vision, mission, product
-descriptions and FAQ answers are reproduced verbatim rather than rewritten,
-so the site reads as the same company as the old one.
+supplied or published.
+
+**Company profile copy (September 2026).** Hero, trust bar, About + Our Story,
+Our Commitment / Vision / Mission, Our Product, Why Sri Gunting Pratama,
+Quality Comes First, Indonesia to the World, Let's Grow Together and Contact
+follow the company profile text the company sent in September 2026. The
+Indonesian dictionary reproduces it verbatim, including the headings and
+taglines it deliberately writes in English; the English dictionary keeps those
+English lines and translates the Indonesian body text. The hero's 1200 g/cm²,
+3-grade and 25 kg figures and the BPOM / Halal marquee items predate that copy
+and come from the product material below.
+
+**Product material.** Products, grades, specifications and the FAQ come from
+sriguntingpratama.com, its product detail pages, and the Export Technical
+Company Profile / QC Datasheet PDFs, reproduced verbatim rather than rewritten.
+`public/docs/company-profile.pdf` is the older export profile and does not yet
+carry the September 2026 copy.
 
 **Recipe section imagery is stock.** `sections/Recipes.jsx` and everything
 under `public/assets/recipes/` use Pexels-licensed photography (free for

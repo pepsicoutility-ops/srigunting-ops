@@ -33,6 +33,8 @@ function organization() {
     logo: { '@type': 'ImageObject', url: `${SITE}/assets/brand/logo.png` },
     image: `${SITE}/assets/brand/og-cover.jpg`,
     description: id.about.body[0],
+    foundingDate: COMPANY.founded,
+    slogan: id.about.title,
     email: COMPANY.email,
     telephone: COMPANY.phoneRaw,
     address: {
@@ -80,7 +82,7 @@ function webPage() {
     '@type': 'WebPage',
     '@id': `${SITE}/#webpage`,
     url: `${SITE}/`,
-    name: `${id.hero.titleA} ${id.hero.titleB} — ${COMPANY.legalName}`,
+    name: `${id.hero.titleA} ${id.hero.titleB} ${id.hero.titleC} — ${COMPANY.legalName}`,
     description: id.hero.lead,
     isPartOf: { '@id': `${SITE}/#website` },
     about: { '@id': `${SITE}/#organization` },

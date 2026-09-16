@@ -2,9 +2,14 @@ import { motion } from 'framer-motion'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 import Reveal, { RevealGroup, revealChild } from '../components/Reveal.jsx'
 
+const sectionTitle = 'font-display text-[clamp(1.6rem,2.4vw,2.25rem)] font-light tracking-tight text-white'
+
 export default function VisionMission() {
   const { t } = useI18n()
+  const commitment = t('visionMission.commitment')
   const mission = t('visionMission.mission')
+  // Only the Indonesian dictionary carries a translation of the vision.
+  const visionTranslation = t('visionMission.visionTranslation')
 
   return (
     <section id="vision" className="relative overflow-hidden bg-ink py-24 text-white sm:py-32">
@@ -14,20 +19,35 @@ export default function VisionMission() {
       </div>
 
       <div className="container-x">
+        {/* ---- Commitment ---- */}
         <Reveal>
           <div className="flex items-center gap-3">
             <span className="h-px w-8 bg-emerald-400" />
-            <span className="eyebrow text-emerald-300">{t('visionMission.eyebrow')}</span>
+            <h2 className={sectionTitle}>{t('visionMission.commitmentTitle')}</h2>
           </div>
         </Reveal>
 
-        <div className="mt-10 grid gap-14 lg:grid-cols-12 lg:gap-16">
+        <RevealGroup className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5" stagger={0.08}>
+          {commitment.map((item, i) => (
+            <motion.article
+              key={item.title}
+              variants={revealChild}
+              className="group relative rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors duration-300 hover:border-emerald-500/40 hover:bg-white/[0.07]"
+            >
+              <span className="font-display text-[13px] text-emerald-400">0{i + 1}</span>
+              <h3 className="mt-4 text-[12px] font-semibold uppercase tracking-eyebrow text-white">{item.title}</h3>
+              <p className="mt-2.5 text-[14px] leading-relaxed text-white/65 transition-colors duration-300 group-hover:text-white/85">
+                {item.body}
+              </p>
+            </motion.article>
+          ))}
+        </RevealGroup>
+
+        <div className="mt-20 grid gap-14 border-t border-white/10 pt-16 sm:mt-24 lg:grid-cols-12 lg:gap-16">
           {/* ---- Vision ---- */}
           <div className="lg:col-span-5">
             <Reveal delay={0.08}>
-              <h2 className="font-display text-[clamp(1.6rem,2.4vw,2.25rem)] font-light tracking-tight text-white">
-                {t('visionMission.visionTitle')}
-              </h2>
+              <h2 className={sectionTitle}>{t('visionMission.visionTitle')}</h2>
             </Reveal>
 
             <Reveal delay={0.16}>
@@ -49,6 +69,11 @@ export default function VisionMission() {
                 <blockquote className="mt-5 font-display text-[clamp(1.25rem,1.9vw,1.75rem)] font-light italic leading-[1.4] text-white">
                   {t('visionMission.vision')}
                 </blockquote>
+                {visionTranslation && (
+                  <p className="mt-5 border-t border-white/10 pt-5 text-[14.5px] leading-relaxed text-white/60">
+                    {visionTranslation}
+                  </p>
+                )}
               </figure>
             </Reveal>
           </div>
@@ -56,9 +81,7 @@ export default function VisionMission() {
           {/* ---- Mission ---- */}
           <div className="lg:col-span-7">
             <Reveal delay={0.12}>
-              <h2 className="font-display text-[clamp(1.6rem,2.4vw,2.25rem)] font-light tracking-tight text-white">
-                {t('visionMission.missionTitle')}
-              </h2>
+              <h2 className={sectionTitle}>{t('visionMission.missionTitle')}</h2>
             </Reveal>
 
             <RevealGroup className="mt-7 space-y-0" stagger={0.1}>

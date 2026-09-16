@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
-import { RevealGroup, revealChild } from '../components/Reveal.jsx'
+import Reveal, { RevealGroup, revealChild } from '../components/Reveal.jsx'
 
 const IMAGES = [
   '/assets/applications/dessert.jpg',
@@ -10,6 +10,7 @@ const IMAGES = [
   '/assets/applications/technical.jpg',
 ]
 
+/** "Our Product — Agar-Agar": what agar-agar is and the industries it serves. */
 export default function Applications() {
   const { t } = useI18n()
   const items = t('applications.items')
@@ -18,48 +19,67 @@ export default function Applications() {
   return (
     <section id="applications" className="relative overflow-hidden bg-cream py-24 sm:py-32">
       <div className="container-x">
-        <SectionHeading
-          eyebrow={t('applications.eyebrow')}
-          title={t('applications.title')}
-          lead={t('applications.lead')}
-          align="center"
-          maxWidth="max-w-3xl"
-        />
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+          {/* ---- Copy + industry list ---- */}
+          <div className="lg:order-2 lg:col-span-7">
+            <SectionHeading
+              eyebrow={t('applications.eyebrow')}
+              title={t('applications.title')}
+              lead={t('applications.lead')}
+              maxWidth="max-w-2xl"
+            />
 
-        <RevealGroup className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.1}>
-          {items.map((item, i) => (
-            <motion.article
-              key={item.title}
-              variants={revealChild}
-              className="group relative isolate overflow-hidden rounded-2xl bg-ink"
-            >
-              <img
-                src={IMAGES[i]}
-                alt={alts[i]}
-                loading="lazy"
-                className="absolute inset-0 -z-10 h-full w-full object-cover opacity-75 transition-[transform,opacity] duration-[1.1s] ease-out group-hover:scale-110 group-hover:opacity-90"
-              />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/70 to-ink/10" />
+            <Reveal delay={0.2}>
+              <p className="mt-8 max-w-2xl text-[15px] leading-[1.8] text-ink-500 sm:text-[16.5px]">
+                {t('applications.intro')}
+              </p>
+            </Reveal>
 
-              <div className="flex min-h-[22rem] flex-col justify-end p-7 lg:min-h-[26rem]">
-                <span className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/25 text-[11px] font-bold text-white/80 transition-colors duration-500 group-hover:border-emerald-400 group-hover:bg-emerald-500 group-hover:text-white">
-                  0{i + 1}
-                </span>
-                <h3 className="font-display text-[22px] font-normal leading-tight tracking-tight text-white">
-                  {item.title}
-                </h3>
-                {/* Body reveals on hover at desktop widths; always visible on touch */}
-                <p className="mt-2.5 text-[13.5px] leading-relaxed text-white/65 lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:transition-all lg:duration-500 lg:group-hover:max-h-40 lg:group-hover:opacity-100">
-                  {item.body}
-                </p>
-                <span
-                  aria-hidden="true"
-                  className="mt-5 h-px w-10 origin-left bg-emerald-500 transition-transform duration-500 group-hover:scale-x-[3.5]"
-                />
-              </div>
-            </motion.article>
-          ))}
-        </RevealGroup>
+            <RevealGroup role="list" className="mt-7 grid gap-3 sm:grid-cols-2" stagger={0.06}>
+              {items.map((item, i) => (
+                <motion.div
+                  key={item}
+                  role="listitem"
+                  variants={revealChild}
+                  className="card-lift group flex items-center gap-4 rounded-xl border border-ink/8 bg-white px-5 py-4"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-[11px] font-bold text-emerald-600 transition-colors duration-300 group-hover:bg-emerald-500 group-hover:text-white">
+                    0{i + 1}
+                  </span>
+                  <span className="text-[14.5px] font-semibold leading-snug text-ink">{item}</span>
+                </motion.div>
+              ))}
+            </RevealGroup>
+
+            <Reveal y={30} delay={0.1}>
+              <p className="mt-8 rounded-2xl border-l-2 border-emerald-500 bg-white p-7 text-[15px] leading-[1.8] text-ink-600 sm:text-[16px]">
+                {t('applications.closing')}
+              </p>
+            </Reveal>
+          </div>
+
+          {/* ---- Photo mosaic: two columns, the right one dropped for a staggered edge ---- */}
+          <div className="lg:order-1 lg:col-span-5">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:sticky lg:top-28">
+              {[0, 1].map((column) => (
+                <div key={column} className={`space-y-3 sm:space-y-4 ${column === 1 ? 'pt-8 sm:pt-12' : ''}`}>
+                  {IMAGES.map((src, i) =>
+                    i % 2 === column ? (
+                      <Reveal key={src} y={34} delay={i * 0.08} className="overflow-hidden rounded-2xl bg-ink">
+                        <img
+                          src={src}
+                          alt={alts[i]}
+                          loading="lazy"
+                          className="aspect-[4/5] w-full object-cover transition-transform duration-[1.1s] ease-out hover:scale-105"
+                        />
+                      </Reveal>
+                    ) : null,
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

@@ -75,7 +75,7 @@ export default function Navbar() {
                 Sri Gunting Pratama
               </span>
               <span className="mt-1 hidden text-[9px] font-semibold uppercase tracking-eyebrow text-emerald-400 sm:block">
-                Agar &amp; Seaweed Extract
+                {COMPANY.descriptor}
               </span>
             </span>
           </a>

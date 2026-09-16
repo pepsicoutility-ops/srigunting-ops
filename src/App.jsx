@@ -5,7 +5,9 @@ import About from './sections/About.jsx'
 import VisionMission from './sections/VisionMission.jsx'
 import Products from './sections/Products.jsx'
 import Specifications from './sections/Specifications.jsx'
+import WhyUs from './sections/WhyUs.jsx'
 import Quality from './sections/Quality.jsx'
+import Market from './sections/Market.jsx'
 import Applications from './sections/Applications.jsx'
 import Recipes from './sections/Recipes.jsx'
 import News from './sections/News.jsx'
@@ -15,6 +17,7 @@ import News from './sections/News.jsx'
 // import Facility from './sections/Facility.jsx'
 import Faq from './sections/Faq.jsx'
 import Downloads from './sections/Downloads.jsx'
+import Partnership from './sections/Partnership.jsx'
 import Contact from './sections/Contact.jsx'
 import Footer from './sections/Footer.jsx'
 import BackToTop from './components/BackToTop.jsx'
@@ -36,14 +39,17 @@ export default function App() {
         <TrustBar />
         <About />
         <VisionMission />
+        <Applications />
         <Products />
         <Specifications />
+        <WhyUs />
         <Quality />
-        <Applications />
+        <Market />
         <Recipes />
         <News />
         <Faq />
         <Downloads />
+        <Partnership />
         <Contact />
       </main>
 

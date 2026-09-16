@@ -1,13 +1,20 @@
 /**
  * Single source of truth for company facts.
  *
- * Every value here is taken verbatim from the company's own material:
- * the live site sriguntingpratama.com, its product detail pages, and the
- * Export Technical Company Profile / QC Datasheet PDFs. Nothing is invented.
+ * Every value here is taken verbatim from the company's own material: the
+ * company profile copy it supplied in September 2026, the live site
+ * sriguntingpratama.com, its product detail pages, and the Export Technical
+ * Company Profile / QC Datasheet PDFs. Nothing is invented.
  */
 export const COMPANY = {
   legalName: 'PT. Sri Gunting Pratama',
   shortName: 'Sri Gunting Pratama',
+  // Sign-off lines from the company profile: "Agar-Agar Manufacturer |
+  // Indonesia — Established 1995". Shown under the name in the header, the
+  // About panel and the footer.
+  descriptor: 'Agar-Agar Manufacturer',
+  country: 'Indonesia',
+  founded: '1995',
   address:
     'Jl. Perusahaan gang Industri No.1, Randu Agung, Singosari, Malang 65153, Jawa Timur, Indonesia',
   addressShort: 'Randu Agung, Singosari — Malang 65153, Jawa Timur',

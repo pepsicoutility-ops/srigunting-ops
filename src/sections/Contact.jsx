@@ -38,6 +38,12 @@ const ICONS = {
       <path d="m3 6 7 5 7-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </>
   ),
+  website: (
+    <>
+      <circle cx="10" cy="10" r="7.5" strokeWidth="1.5" />
+      <path d="M2.5 10h15M10 2.5c2 2.1 3 4.6 3 7.5s-1 5.4-3 7.5c-2-2.1-3-4.6-3-7.5s1-5.4 3-7.5Z" strokeWidth="1.5" strokeLinejoin="round" />
+    </>
+  ),
   phone: (
     <path
       d="M6.4 3.5H4.2c-.9 0-1.7.8-1.6 1.7.5 7 5.2 11.7 12.2 12.2.9.1 1.7-.7 1.7-1.6v-2.2c0-.7-.5-1.3-1.2-1.5l-2-.5c-.6-.1-1.2.1-1.5.6l-.6.9a10.6 10.6 0 0 1-4.4-4.4l.9-.6c.5-.3.7-.9.6-1.5l-.5-2c-.2-.7-.8-1.1-1.4-1.1Z"
@@ -85,6 +91,7 @@ export default function Contact() {
     { icon: 'location', label: info.locationLabel, value: COMPANY.address },
     { icon: 'email', label: info.emailLabel, value: COMPANY.email, href: `mailto:${COMPANY.email}` },
     { icon: 'phone', label: info.phoneLabel, value: COMPANY.phone, href: `tel:${COMPANY.phoneRaw}` },
+    { icon: 'website', label: info.websiteLabel, value: COMPANY.website, href: COMPANY.url },
   ]
 
   return (

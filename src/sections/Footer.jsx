@@ -31,7 +31,7 @@ export default function Footer() {
               <span>
                 <span className="block font-display text-lg font-semibold tracking-tight">{COMPANY.legalName}</span>
                 <span className="mt-1 block text-[9px] font-semibold uppercase tracking-eyebrow text-emerald-400">
-                  Agar &amp; Seaweed Extract
+                  {COMPANY.descriptor} | {COMPANY.country}
                 </span>
               </span>
             </a>

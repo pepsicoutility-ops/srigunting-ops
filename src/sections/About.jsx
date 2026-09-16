@@ -1,35 +1,14 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
-import Reveal, { RevealGroup, revealChild } from '../components/Reveal.jsx'
+import Reveal from '../components/Reveal.jsx'
 import { COMPANY } from '../data/company.js'
-
-const ICONS = [
-  // Quality consistency — shield with check
-  <path
-    key="a"
-    d="M11 2.5 4 5.5v5.2c0 4.3 2.9 8.2 7 9.3 4.1-1.1 7-5 7-9.3V5.5L11 2.5Zm-2.6 9.1 2.1 2.1 4.2-4.2"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  />,
-  // Process stability — waveform
-  <path key="b" d="M3 12h3l2.5-6 3 12L14 9l2 3h3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />,
-  // Sustainable supply — leaf
-  <path
-    key="c"
-    d="M4 18C3 12 6.5 5 18 4c1 8-3.5 13-9 13-1.8 0-3.4-.4-5-1Zm0 0c2-4 5-7 9.5-9"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  />,
-]
 
 export default function About() {
   const { t } = useI18n()
   const reduceMotion = useReducedMotion()
   const body = t('about.body')
-  const highlights = t('about.highlights')
+  const story = t('about.story')
 
   return (
     <section id="about" className="relative overflow-hidden bg-cream py-24 sm:py-32">
@@ -51,25 +30,44 @@ export default function About() {
               ))}
             </div>
 
-            <RevealGroup className="mt-10 max-w-2xl space-y-3" stagger={0.12}>
-              {highlights.map((item, i) => (
-                <motion.article
-                  key={item.title}
-                  variants={revealChild}
-                  className="card-lift group flex gap-5 rounded-xl border border-ink/8 bg-white p-6"
-                >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 transition-colors duration-300 group-hover:bg-emerald-500 group-hover:text-white">
-                    <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" className="h-5 w-5">
-                      {ICONS[i]}
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 className="text-[15px] font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-500">{item.body}</p>
-                  </div>
-                </motion.article>
-              ))}
-            </RevealGroup>
+            {/* ---- Our story ---- */}
+            <div className="mt-16 max-w-2xl border-t border-ink/10 pt-14">
+              <Reveal>
+                <div className="flex items-center gap-3">
+                  <span className="h-px w-8 bg-emerald-500" />
+                  <span className="eyebrow text-emerald-600">{story.eyebrow}</span>
+                </div>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <h3 className="mt-5 font-display text-[clamp(1.6rem,2.4vw,2.4rem)] font-light leading-[1.12] tracking-[-0.015em] text-ink">
+                  {story.title}
+                </h3>
+              </Reveal>
+
+              <div className="mt-7 space-y-5">
+                {story.body.map((paragraph, i) => (
+                  <Reveal key={i} delay={0.12 + i * 0.08}>
+                    <p className="text-[15px] leading-[1.8] text-ink-500 sm:text-[16.5px]">{paragraph}</p>
+                  </Reveal>
+                ))}
+              </div>
+
+              <Reveal y={30} delay={0.1}>
+                <figure className="mt-9 rounded-2xl border-l-2 border-emerald-500 bg-white p-7 sm:p-8">
+                  <blockquote className="space-y-2 font-display text-[clamp(1.2rem,1.7vw,1.5rem)] font-light leading-[1.45] text-ink">
+                    {story.quote.map((line, i) => (
+                      <p key={line} className={i === 0 ? 'italic text-ink-500' : undefined}>
+                        {line}
+                      </p>
+                    ))}
+                  </blockquote>
+                </figure>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <p className="mt-9 text-[15px] leading-[1.8] text-ink-500 sm:text-[16.5px]">{story.closing}</p>
+              </Reveal>
+            </div>
           </div>
 
           {/* ---- Facility visual ---- */}
@@ -115,7 +113,10 @@ export default function About() {
                     {COMPANY.legalName}
                   </p>
                   <span className="mt-2 text-[10px] font-semibold uppercase tracking-eyebrow text-emerald-400">
-                    Agar &amp; Seaweed Extract
+                    {COMPANY.descriptor} | {COMPANY.country}
+                  </span>
+                  <span className="mt-1.5 text-[10px] font-semibold uppercase tracking-eyebrow text-white/45">
+                    {t('common.established')}
                   </span>
                 </motion.div>
 
