@@ -18,14 +18,14 @@ export const COMPANY = {
   address:
     'Jl. Perusahaan gang Industri No.1, Randu Agung, Singosari, Malang 65153, Jawa Timur, Indonesia',
   addressShort: 'Randu Agung, Singosari — Malang 65153, Jawa Timur',
-  // Company phone number for every tel: link, the header and the footer.
-  phone: '+62 818-807-772',
-  phoneRaw: '+62818807772',
+  // Single company number (0823-3073-3355) for every tel: link, the header,
+  // the footer and the WhatsApp deep link. Change it here and it changes
+  // everywhere.
+  phone: '+62 823-3073-3355',
+  phoneRaw: '+6282330733355',
   email: 'info@srigunting.id',
   website: 'srigunting.id',
   url: 'https://srigunting.id',
-  // WhatsApp has its own number (0823-3073-3355), separate from the phone
-  // line above. Used by every WhatsApp button, including the floating one.
   whatsappNumber: '+62 823-3073-3355',
   whatsapp:
     "https://api.whatsapp.com/send?phone=6282330733355&text=I'm%20interested%20in%20your%20provided%20service",
