@@ -106,11 +106,13 @@ export default function Footer() {
                     {COMPANY.phone}
                   </a>
                 </li>
-                <li>
-                  <a href={`mailto:${COMPANY.email}`} className="break-words transition-colors hover:text-emerald-400">
-                    {COMPANY.email}
-                  </a>
-                </li>
+                {COMPANY.emails.map((email) => (
+                  <li key={email}>
+                    <a href={`mailto:${email}`} className="break-words transition-colors hover:text-emerald-400">
+                      {email}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </address>
           </div>

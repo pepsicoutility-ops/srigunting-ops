@@ -89,7 +89,11 @@ export default function Contact() {
 
   const ROWS = [
     { icon: 'location', label: info.locationLabel, value: COMPANY.address },
-    { icon: 'email', label: info.emailLabel, value: COMPANY.email, href: `mailto:${COMPANY.email}` },
+    {
+      icon: 'email',
+      label: info.emailLabel,
+      links: COMPANY.emails.map((email) => ({ value: email, href: `mailto:${email}` })),
+    },
     { icon: 'phone', label: info.phoneLabel, value: COMPANY.phone, href: `tel:${COMPANY.phoneRaw}` },
     { icon: 'website', label: info.websiteLabel, value: COMPANY.website, href: COMPANY.url },
   ]
@@ -130,7 +134,13 @@ export default function Contact() {
                         {row.label}
                       </p>
                       <p className="mt-1.5 break-words text-[14px] leading-relaxed text-white/85">
-                        {row.href ? (
+                        {row.links ? (
+                          row.links.map((link) => (
+                            <a key={link.href} href={link.href} className="block transition-colors hover:text-emerald-400">
+                              {link.value}
+                            </a>
+                          ))
+                        ) : row.href ? (
                           <a href={row.href} className="transition-colors hover:text-emerald-400">
                             {row.value}
                           </a>

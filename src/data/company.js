@@ -23,7 +23,10 @@ export const COMPANY = {
   // everywhere.
   phone: '+62 823-3073-3355',
   phoneRaw: '+6282330733355',
+  // `email` is the primary address (used in schema.org); `emails` lists every
+  // address shown on the page, in display order.
   email: 'info@srigunting.id',
+  emails: ['info@srigunting.id', 'fli@srigunting.id'],
   website: 'srigunting.id',
   url: 'https://srigunting.id',
   whatsappNumber: '+62 823-3073-3355',
