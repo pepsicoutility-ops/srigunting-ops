@@ -1,7 +1,7 @@
 # PT Sri Gunting Pratama — Company Profile
 
 Landing page for PT Sri Gunting Pratama, an Indonesian agar-agar manufacturer
-established in 1995, based in Malang, East Java.
+established in 1988, based in Malang, East Java.
 
 Built with **React 18 + Vite + Tailwind CSS + Framer Motion**, fully bilingual
 (English / Bahasa Indonesia) and responsive from 360 px up.

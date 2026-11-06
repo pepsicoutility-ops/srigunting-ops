@@ -30,14 +30,14 @@ export default {
     eyebrow: 'PT. Sri Gunting Pratama',
     titleA: 'Indonesian',
     titleB: 'Agar-Agar Manufacturer',
-    titleC: 'Since 1995',
+    titleC: 'Since 1988',
     lead: 'From Indonesia’s Natural Sea Resources to Quality Agar-Agar for the World.',
     primary: 'Lihat Produk Kami',
     secondary: 'Unduh Profil Perusahaan',
     scroll: 'Gulir untuk menjelajah',
     imageAlt: 'Sak tepung agar-agar curah 25 kg produksi PT. Sri Gunting Pratama',
     stats: [
-      { value: 30, suffix: '+', label: 'Tahun pengalaman' },
+      { value: 35, suffix: '+', label: 'Tahun pengalaman' },
       { value: 1200, prefix: 'hingga ', suffix: ' g/cm²', label: 'Kekuatan gel grade Super' },
       { value: 3, suffix: ' Grade', label: 'Super · Premium · Standard' },
       { value: 25, suffix: ' kg', label: 'Kemasan sak curah' },
@@ -45,9 +45,9 @@ export default {
   },
 
   trust: {
-    label: 'Agar-Agar Manufacturer | Indonesia — Established 1995',
+    label: 'Agar-Agar Manufacturer | Indonesia — Established 1988',
     items: [
-      'Established Since 1995',
+      'Established Since 1988',
       'Indonesian Raw Material',
       'Consistent Quality',
       'Customer Oriented',
@@ -62,8 +62,8 @@ export default {
     eyebrow: 'Tentang Kami',
     title: 'Quality from Nature. Consistency from Experience.',
     body: [
-      'PT. Sri Gunting Pratama adalah perusahaan manufaktur agar-agar asal Indonesia yang telah berdiri dan berkembang sejak 1995.',
-      'Selama lebih dari tiga dekade, kami membangun pengalaman dan keahlian dalam mengolah bahan baku rumput laut menjadi produk agar-agar yang berkualitas, konsisten, dan dapat memenuhi kebutuhan berbagai industri.',
+      'PT. Sri Gunting Pratama adalah perusahaan manufaktur agar-agar asal Indonesia yang telah berdiri dan berkembang sejak 1988.',
+      'Selama lebih dari 35 tahun, kami membangun pengalaman dan keahlian dalam mengolah bahan baku rumput laut menjadi produk agar-agar yang berkualitas, konsisten, dan dapat memenuhi kebutuhan berbagai industri.',
       'Berbasis di Indonesia, salah satu negara penghasil rumput laut terbesar di dunia, kami memiliki akses terhadap sumber daya alam yang menjadi fondasi utama produk kami.',
       'Dengan perpaduan pengalaman, kualitas bahan baku, proses produksi yang terkontrol, dan komitmen terhadap kepuasan pelanggan, PT. Sri Gunting Pratama terus berkembang sebagai mitra terpercaya bagi pelanggan di Indonesia maupun pasar internasional.',
     ],
@@ -71,9 +71,9 @@ export default {
     locationValue: 'Malang 65153, Jawa Timur — Indonesia',
     story: {
       eyebrow: 'Our Story',
-      title: 'More Than 30 Years of Experience',
+      title: 'More Than 35 Years of Experience',
       body: [
-        'Sejak tahun 1995, PT. Sri Gunting Pratama telah melewati berbagai perkembangan industri dan perubahan kebutuhan pasar.',
+        'Sejak tahun 1988, PT. Sri Gunting Pratama telah melewati berbagai perkembangan industri dan perubahan kebutuhan pasar.',
         'Pengalaman panjang tersebut menjadi aset penting bagi kami dalam memahami karakteristik bahan baku, proses pengolahan, kebutuhan aplikasi, hingga tuntutan kualitas pelanggan.',
       ],
       quote: [
@@ -198,8 +198,8 @@ export default {
     title: 'Why Sri Gunting Pratama?',
     items: [
       {
-        title: 'Established Since 1995',
-        body: 'Lebih dari 30 tahun pengalaman memberikan kami pemahaman mendalam mengenai industri agar-agar dan pengolahan rumput laut.',
+        title: 'Established Since 1988',
+        body: 'Lebih dari 35 tahun pengalaman memberikan kami pemahaman mendalam mengenai industri agar-agar dan pengolahan rumput laut.',
       },
       {
         title: 'Indonesian Raw Material',
@@ -242,7 +242,7 @@ export default {
     body: [
       'Indonesia memiliki kekayaan sumber daya laut yang luar biasa.',
       'PT. Sri Gunting Pratama ingin membawa salah satu potensi tersebut ke pasar yang lebih luas.',
-      'Dengan pengalaman sejak 1995, kami siap menjadi mitra bagi perusahaan lokal maupun buyer internasional yang membutuhkan agar-agar berkualitas dari Indonesia.',
+      'Dengan pengalaman sejak 1988, kami siap menjadi mitra bagi perusahaan lokal maupun buyer internasional yang membutuhkan agar-agar berkualitas dari Indonesia.',
     ],
     partnersLabel: 'Kami terbuka untuk bekerja sama dengan:',
     partners: [
@@ -515,7 +515,7 @@ export default {
     eyebrow: 'Looking for a Reliable Agar-Agar Supplier?',
     title: 'Let’s Grow Together.',
     body: 'Jika Anda sedang mencari supplier agar-agar dari Indonesia untuk kebutuhan industri, distribusi, perdagangan, maupun ekspor, PT. Sri Gunting Pratama siap menjadi partner Anda.',
-    credo: ['More than 30 years of experience.', 'One commitment to quality.', 'One goal: long-term partnership.'],
+    credo: ['More than 35 years of experience.', 'One commitment to quality.', 'One goal: long-term partnership.'],
   },
 
   contact: {
@@ -546,7 +546,7 @@ export default {
 
   footer: {
     tagline:
-      'PT. Sri Gunting Pratama adalah perusahaan manufaktur agar-agar asal Indonesia yang telah berdiri dan berkembang sejak 1995.',
+      'PT. Sri Gunting Pratama adalah perusahaan manufaktur agar-agar asal Indonesia yang telah berdiri dan berkembang sejak 1988.',
     usefulLinks: 'Tautan Berguna',
     services: 'Layanan Kami',
     servicesList: ['Tepung agar-agar', 'Tepung Jeli'],
@@ -555,5 +555,5 @@ export default {
     rights: 'Seluruh hak cipta dilindungi.',
   },
 
-  common: { langSwitch: 'Bahasa', backToTop: 'Kembali ke atas', established: 'Established 1995' },
+  common: { langSwitch: 'Bahasa', backToTop: 'Kembali ke atas', established: 'Established 1988' },
 }

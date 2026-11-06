@@ -30,14 +30,14 @@ export default {
     eyebrow: 'PT. Sri Gunting Pratama',
     titleA: 'Indonesian',
     titleB: 'Agar-Agar Manufacturer',
-    titleC: 'Since 1995',
+    titleC: 'Since 1988',
     lead: 'From Indonesia’s Natural Sea Resources to Quality Agar-Agar for the World.',
     primary: 'Our Products',
     secondary: 'Download Company Profile',
     scroll: 'Scroll to explore',
     imageAlt: '25 kg bulk sack of agar-agar powder produced by PT. Sri Gunting Pratama',
     stats: [
-      { value: 30, suffix: '+', label: 'Years of experience' },
+      { value: 35, suffix: '+', label: 'Years of experience' },
       { value: 1200, prefix: 'up to ', suffix: ' g/cm²', label: 'Super grade gel strength' },
       { value: 3, suffix: ' Grades', label: 'Super · Premium · Standard' },
       { value: 25, suffix: ' kg', label: 'Bulk sack packing' },
@@ -45,9 +45,9 @@ export default {
   },
 
   trust: {
-    label: 'Agar-Agar Manufacturer | Indonesia — Established 1995',
+    label: 'Agar-Agar Manufacturer | Indonesia — Established 1988',
     items: [
-      'Established Since 1995',
+      'Established Since 1988',
       'Indonesian Raw Material',
       'Consistent Quality',
       'Customer Oriented',
@@ -62,8 +62,8 @@ export default {
     eyebrow: 'About Us',
     title: 'Quality from Nature. Consistency from Experience.',
     body: [
-      'PT. Sri Gunting Pratama is an Indonesian agar-agar manufacturer, established in 1995 and growing ever since.',
-      'For more than three decades, we have built the experience and expertise to process seaweed raw material into agar-agar products that are high in quality, consistent, and able to meet the needs of a wide range of industries.',
+      'PT. Sri Gunting Pratama is an Indonesian agar-agar manufacturer, established in 1988 and growing ever since.',
+      'For more than 35 years, we have built the experience and expertise to process seaweed raw material into agar-agar products that are high in quality, consistent, and able to meet the needs of a wide range of industries.',
       'Based in Indonesia, one of the largest seaweed-producing countries in the world, we have access to the natural resources that form the foundation of our products.',
       'Through a combination of experience, quality raw materials, a controlled production process and a commitment to customer satisfaction, PT. Sri Gunting Pratama continues to grow as a trusted partner for customers in Indonesia and in international markets.',
     ],
@@ -71,9 +71,9 @@ export default {
     locationValue: 'Malang 65153, Jawa Timur — Indonesia',
     story: {
       eyebrow: 'Our Story',
-      title: 'More Than 30 Years of Experience',
+      title: 'More Than 35 Years of Experience',
       body: [
-        'Since 1995, PT. Sri Gunting Pratama has lived through many developments in the industry and many changes in what the market needs.',
+        'Since 1988, PT. Sri Gunting Pratama has lived through many developments in the industry and many changes in what the market needs.',
         'That long experience is an important asset in understanding the characteristics of raw materials, processing, application requirements and the quality our customers demand.',
       ],
       quote: [
@@ -196,8 +196,8 @@ export default {
     title: 'Why Sri Gunting Pratama?',
     items: [
       {
-        title: 'Established Since 1995',
-        body: 'More than 30 years of experience has given us a deep understanding of the agar-agar industry and of seaweed processing.',
+        title: 'Established Since 1988',
+        body: 'More than 35 years of experience has given us a deep understanding of the agar-agar industry and of seaweed processing.',
       },
       {
         title: 'Indonesian Raw Material',
@@ -240,7 +240,7 @@ export default {
     body: [
       'Indonesia is extraordinarily rich in marine resources.',
       'PT. Sri Gunting Pratama wants to bring part of that potential to a wider market.',
-      'With experience going back to 1995, we are ready to partner with local companies and international buyers who need quality agar-agar from Indonesia.',
+      'With experience going back to 1988, we are ready to partner with local companies and international buyers who need quality agar-agar from Indonesia.',
     ],
     partnersLabel: 'We are open to working with:',
     partners: [
@@ -512,7 +512,7 @@ export default {
     eyebrow: 'Looking for a Reliable Agar-Agar Supplier?',
     title: 'Let’s Grow Together.',
     body: 'If you are looking for an agar-agar supplier from Indonesia for manufacturing, distribution, trading or export, PT. Sri Gunting Pratama is ready to be your partner.',
-    credo: ['More than 30 years of experience.', 'One commitment to quality.', 'One goal: long-term partnership.'],
+    credo: ['More than 35 years of experience.', 'One commitment to quality.', 'One goal: long-term partnership.'],
   },
 
   contact: {
@@ -543,7 +543,7 @@ export default {
 
   footer: {
     tagline:
-      'PT. Sri Gunting Pratama is an Indonesian agar-agar manufacturer, established in 1995 and growing ever since.',
+      'PT. Sri Gunting Pratama is an Indonesian agar-agar manufacturer, established in 1988 and growing ever since.',
     usefulLinks: 'Useful Links',
     services: 'Our Services',
     servicesList: ['Agar-agar powder', 'Jelly Powder'],
@@ -552,5 +552,5 @@ export default {
     rights: 'All rights reserved.',
   },
 
-  common: { langSwitch: 'Language', backToTop: 'Back to top', established: 'Established 1995' },
+  common: { langSwitch: 'Language', backToTop: 'Back to top', established: 'Established 1988' },
 }

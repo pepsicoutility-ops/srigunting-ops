@@ -10,11 +10,11 @@ export const COMPANY = {
   legalName: 'PT. Sri Gunting Pratama',
   shortName: 'Sri Gunting Pratama',
   // Sign-off lines from the company profile: "Agar-Agar Manufacturer |
-  // Indonesia — Established 1995". Shown under the name in the header, the
+  // Indonesia — Established 1988". Shown under the name in the header, the
   // About panel and the footer.
   descriptor: 'Agar-Agar Manufacturer',
   country: 'Indonesia',
-  founded: '1995',
+  founded: '1988',
   address:
     'Jl. Perusahaan gang Industri No.1, Randu Agung, Singosari, Malang 65153, Jawa Timur, Indonesia',
   addressShort: 'Randu Agung, Singosari — Malang 65153, Jawa Timur',
